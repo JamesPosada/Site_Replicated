@@ -18,8 +18,17 @@ namespace ReplicatedSite
 
         public static class ExigoPaymentApiCredentials
         {
-            public static string LoginName                          = "";
-            public static string Password                           = "";
+            public static string LoginName                          = "exigodemo_w77ipWL41";
+            public static string Password                           = "594bIToTPmPe7W574IcoGzTg";
+        }
+
+        public static class Encryptions
+        {
+            public static class General
+            {
+                public static string Key                            = "generictoken";
+                public static string IV                             = "1H3f5E2v6M8N5p0O";
+            }
         }
 
         public static class ExigoApiSettings

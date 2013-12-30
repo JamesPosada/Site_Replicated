@@ -152,8 +152,9 @@
     <Compile Include="Global\Settings.cs" />
     <Compile Include="Global\Utilities.cs" />
     <Compile Include="Helpers\Dapper.cs" />
-    <Compile Include="Helpers\GlobalResourcesToJavaScriptService.cs" />
+    <Compile Include="Helpers\GlobalResourceToJavaScriptHelper.cs" />
     <Compile Include="Helpers\GreekingHelper.cs" />
+    <Compile Include="Helpers\JsonNetResult.cs" />
     <Compile Include="Helpers\SqlHelper.cs" />
     <Compile Include="Models\Identity.cs" />
     <Compile Include="Models\Market.cs" />

@@ -8,6 +8,8 @@ using ReplicatedSite.Exigo.WebService;
 using System.Text;
 using System.Data.SqlTypes;
 using ReplicatedSite.Models;
+using System.IO;
+using System.Security.Cryptography;
 
 namespace ReplicatedSite
 {
@@ -38,6 +40,18 @@ namespace ReplicatedSite
             if (length > maxLength) content += "...";
 
             return content;
+        }
+
+        /// <summary>
+        /// Uppercase first letters of all words in the string.
+        /// </summary>
+        public static string UpperFirst(string s)
+        {
+            return Regex.Replace(s, @"\b[a-z]\w+", delegate(Match match)
+            {
+                string v = match.ToString();
+                return char.ToUpper(v[0]) + v.Substring(1);
+            });
         }
 
         /// <summary>
@@ -177,6 +191,133 @@ namespace ReplicatedSite
 
             return ip;
         }
+
+        /// <summary>
+        /// Returns a list of matching merge fields from the provided text. Note that this is the only place that determines the merge field's syntax.
+        /// </summary>
+        /// <param name="text">The text containing the merge fields</param>
+        /// <returns>A distinct list of the merge fields found</returns>
+        public static MatchCollection GetMergeFieldMatches(string text)
+        {
+            // Get only the unique matches - we're going to replace all like instances each round.
+            var matches = Regex.Matches(text.ToString(), "{{(?<field>[a-zA-Z0-9]+)}}");
+
+            return matches;
+        }
+
+        /// <summary>
+        /// Replaces any merge fields following the syntax {{string}} with the value of any property of the same name in the provided dataSource. 
+        /// If the property does not exist, the provided defaultText will be used (Defaults to "").
+        /// For example: {{FirstName}} will be replaced with the value of the FirstName property of your data source if the property exists. 
+        /// </summary>
+        /// <param name="text">The string containing the merge fields.</param>
+        /// <param name="dataSource">The object containing the values of the merge fields</param>
+        /// <param name="defaultText">The text used if a property is not found in the data source. Defaults to "".</param>
+        /// <returns>The flattened text with all merge fields replaced with their corresponding values.</returns>
+        public static string MergeFields(string text, object dataSource, string defaultText = "")
+        {
+            var result = new StringBuilder(text);
+            MatchCollection matches = GetMergeFieldMatches(text);
+            int offset = 0;
+
+            foreach (Match match in matches)
+            {
+                // Get some variables to make them easier to reference
+                var mergedContent = "(N/A)";
+
+                // Use reflection to get the matched field from the customer
+                var type = dataSource.GetType();
+                var property = type.GetProperty(match.Groups["field"].Value);
+                if (property != null)
+                {
+                    mergedContent = property.GetValue(dataSource).ToString();
+                }
+
+                // Replace the merge field with the merged content
+                result.Remove(match.Index + offset, match.Length);
+                result.Insert(match.Index + offset, mergedContent);
+
+                offset = offset + mergedContent.Length - match.Length;
+
+            }
+
+            return result.ToString();
+        }
+
+        /// <summary>
+        /// Encrypts the provided plainText string using Rijndael AES encryption.
+        /// </summary>
+        /// <param name="plainText">The text to be encrypted</param>
+        /// <param name="key">The encryption key</param>
+        /// <param name="iv">The secret IV key</param>
+        /// <returns>The encrypted value</returns>
+        public static string Encrypt(string plainText, string key, string iv)
+        {
+            byte[] encrypted;
+
+            using (var aesAlg = new AesManaged())
+            using (var hasher = new SHA256Managed())
+            {
+                aesAlg.Key = hasher.ComputeHash(Encoding.UTF8.GetBytes(key));
+                aesAlg.IV = Encoding.UTF8.GetBytes(iv);
+
+                var encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
+                using (var msEncrypt = new MemoryStream())
+                {
+                    using (var csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                    {
+                        using (var swEncrypt = new StreamWriter(csEncrypt))
+                        {
+                            swEncrypt.Write(plainText);
+                        }
+                        encrypted = msEncrypt.ToArray();
+                    }
+                }
+            }
+            return Convert.ToBase64String(encrypted);
+        }
+        public static string UrlEncrypt(string plainText, string key, string iv)
+        {
+            return HttpContext.Current.Server.UrlEncode(Encrypt(plainText, key, iv));
+        }
+
+        /// <summary>
+        /// Decrypts the provided Rijndael AES encrypted string.
+        /// </summary>
+        /// <param name="encrypted">The text to be decrypted</param>
+        /// <param name="key">The encryption key</param>
+        /// <param name="iv">The secret IV key</param>
+        /// <returns>The decrypted value</returns>
+        public static string Decrypt(string encrypted, string key, string iv)
+        {
+            string plaintext = null;
+
+            using (var aesAlg = new AesManaged())
+            using (var hasher = new SHA256Managed())
+            {
+                aesAlg.Key = hasher.ComputeHash(Encoding.UTF8.GetBytes(key));
+                aesAlg.IV = Encoding.UTF8.GetBytes(iv);
+
+                var decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
+                using (var msDecrypt = new MemoryStream(Convert.FromBase64String(encrypted)))
+                {
+                    using (var csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                    {
+                        using (var srDecrypt = new StreamReader(csDecrypt))
+                        {
+                            plaintext = srDecrypt.ReadToEnd();
+                        }
+                    }
+                }
+            }
+            return plaintext;
+        }
+        public static string UrlDecrypt(string plainText, string key, string iv)
+        {
+            return Decrypt(HttpContext.Current.Server.UrlDecode(plainText), key, iv);
+        }
+
+
 
         #region Markets
         /// <summary>
