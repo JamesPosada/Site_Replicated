@@ -10,6 +10,7 @@ using System.Data.SqlTypes;
 using ReplicatedSite.Models;
 using System.IO;
 using System.Security.Cryptography;
+using System.Net;
 
 namespace ReplicatedSite
 {
@@ -191,6 +192,50 @@ namespace ReplicatedSite
 
             return ip;
         }
+
+        /// <summary>
+        /// Get the image bytes from a web request to an image at the provided URL
+        /// </summary>
+        /// <param name="url">The URL of the image</param>
+        /// <returns>A byte array </returns>
+        public static byte[] GetImageBytes(string url)
+        {
+            WebResponse result = null;
+            var bytes = new byte[0];
+
+            try
+            {
+                WebRequest request = WebRequest.Create(url);
+                result = request.GetResponse();
+                Stream stream = result.GetResponseStream();
+                BinaryReader br = new BinaryReader(stream);
+                byte[] rBytes = br.ReadBytes(1000000);
+                br.Close();
+                result.Close();
+                bytes = new MemoryStream(rBytes, 0, rBytes.Length).ToArray();
+            }
+            catch (Exception c)
+            {
+                //MessageBox.Show(c.Message);
+            }
+            finally
+            {
+                if (result != null) result.Close();
+            }
+
+            return bytes;
+        }
+
+        /// <summary>
+        /// Get the image bytes from a web request to an image at the provided URL
+        /// </summary>
+        /// <param name="url">The URL of the image</param>
+        /// <returns>A byte array </returns>
+        public static string GetCustomerAvatarUrl(int customerID)
+        {
+            return "http://api.exigo.com/4.0/{0}/images/customers/{1}/avatar.png".FormatWith(GlobalSettings.ExigoApiCredentials.CompanyKey, customerID);
+        }
+
 
         /// <summary>
         /// Returns a list of matching merge fields from the provided text. Note that this is the only place that determines the merge field's syntax.

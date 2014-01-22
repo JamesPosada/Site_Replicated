@@ -3,6 +3,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>About</h2>
+<h2>About @Identity.Current.FirstName</h2>
+
+
+<img src="@Url.Avatar()" alt="" class="img-circle img-thumbnail img-responsive" />
 
 <a href="@Url.Action("Index", "Home")" class="btn btn-default">Home</a>

@@ -141,11 +141,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\DocumentationController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImagesController.cs" />
     <Compile Include="Factories\ExigoApiFactory.cs" />
+    <Compile Include="Filters\HandleExigoErrorAttribute.cs" />
+    <Compile Include="Filters\ReplicatedSiteAuthorizeAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -157,9 +160,14 @@
     <Compile Include="Helpers\GreekingHelper.cs" />
     <Compile Include="Helpers\JsonNetResult.cs" />
     <Compile Include="Helpers\SqlHelper.cs" />
-    <Compile Include="Models\Identity.cs" />
-    <Compile Include="Models\Market.cs" />
-    <Compile Include="Models\WebPrinciple.cs" />
+    <Compile Include="HtmlHelpers\Forms.cs" />
+    <Compile Include="HtmlHelpers\Images.cs" />
+    <Compile Include="Models\CountryRegions\Country.cs" />
+    <Compile Include="Models\CountryRegions\CountryRegionCollection.cs" />
+    <Compile Include="Models\CountryRegions\Region.cs" />
+    <Compile Include="Models\Identity\Identity.cs" />
+    <Compile Include="Models\Markets\Market.cs" />
+    <Compile Include="Models\Identity\WebPrinciple.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -171,6 +179,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.datasvcmap</DependentUpon>
     </Compile>
+    <Compile Include="Services\CountryRegionService.cs" />
     <Compile Include="Services\GlobalResourcesToJavaScriptService.cs" />
     <Compile Include="Services\IdentityAuthenticationService.cs" />
     <Compile Include="Web References\Exigo.WebService\Reference.cs">
