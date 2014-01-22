@@ -2,27 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using ReplicatedSite.Exigo.WebService;
+using ReplicatedSite.Exigo.OData;
 using System.Text;
+using System.Data.Services.Client;
 using System.Xml.Linq;
 using System.Net;
 using System.IO;
-using System.Data.Services.Client;
-using ReplicatedSite.Exigo.WebService;
-using ReplicatedSite.Exigo.OData;
 using System.Data.SqlClient;
+using ReplicatedSite.Exigo.Api;
 
 namespace ReplicatedSite
 {
-    public static class ExigoApiContext
+    public static class ExigoApiFactory
     {
         #region Properties
         private static string LoginName = GlobalSettings.ExigoApiCredentials.LoginName;
-        private static string Password = GlobalSettings.ExigoApiCredentials.Password;
-        private static string Company = GlobalSettings.ExigoApiCredentials.CompanyKey;
+        private static string Password  = GlobalSettings.ExigoApiCredentials.Password;
+        private static string Company   = GlobalSettings.ExigoApiCredentials.CompanyKey;
         #endregion Properties
 
         #region Contexts
-
         #region Web Service Contexts
         public static ExigoApi CreateWebServiceContext()
         {
@@ -35,12 +35,20 @@ namespace ReplicatedSite
         private static ExigoApi GetNewWebServiceContext(ExigoApiContextSource source)
         {
             var sourceUrl = "";
-            switch (source)
+            switch(source)
             {
-                case ExigoApiContextSource.Live: sourceUrl = GlobalSettings.ExigoApiSettings.WebService.LiveUrl; break;
-                case ExigoApiContextSource.Sandbox1: sourceUrl = GlobalSettings.ExigoApiSettings.WebService.Sandbox1Url; break;
-                case ExigoApiContextSource.Sandbox2: sourceUrl = GlobalSettings.ExigoApiSettings.WebService.Sandbox2Url; break;
-                case ExigoApiContextSource.Sandbox3: sourceUrl = GlobalSettings.ExigoApiSettings.WebService.Sandbox3Url; break;
+                case ExigoApiContextSource.Live:
+                    sourceUrl = GlobalSettings.ExigoApiSettings.WebService.LiveUrl;
+                    break;
+                case ExigoApiContextSource.Sandbox1:
+                    sourceUrl = GlobalSettings.ExigoApiSettings.WebService.Sandbox1Url;
+                    break;
+                case ExigoApiContextSource.Sandbox2:
+                    sourceUrl = GlobalSettings.ExigoApiSettings.WebService.Sandbox2Url;
+                    break;
+                case ExigoApiContextSource.Sandbox3:
+                    sourceUrl = GlobalSettings.ExigoApiSettings.WebService.Sandbox3Url;
+                    break;
             }
 
             return new ExigoApi
@@ -50,15 +58,15 @@ namespace ReplicatedSite
                     LoginName = LoginName,
                     Password = Password,
                     Company = Company
-                },            
+                },
                 Url = sourceUrl
-            };      
+            };
         }
         #endregion
 
-        #region OData Contexts
+        #region OData Context
         public static ExigoContext CreateODataContext()
-        {        
+        {
             return GetNewODataContext(GlobalSettings.ExigoApiSettings.DefaultContextSource);
         }
         public static ExigoContext CreateODataContext(ExigoApiContextSource source)
@@ -68,12 +76,20 @@ namespace ReplicatedSite
         private static ExigoContext GetNewODataContext(ExigoApiContextSource source)
         {
             var sourceUrl = "";
-            switch (source)
+            switch(source)
             {
-                case ExigoApiContextSource.Live: sourceUrl = GlobalSettings.ExigoApiSettings.OData.LiveUrl; break;
-                case ExigoApiContextSource.Sandbox1: sourceUrl = GlobalSettings.ExigoApiSettings.OData.Sandbox1Url; break;
-                case ExigoApiContextSource.Sandbox2: sourceUrl = GlobalSettings.ExigoApiSettings.OData.Sandbox2Url; break;
-                case ExigoApiContextSource.Sandbox3: sourceUrl = GlobalSettings.ExigoApiSettings.OData.Sandbox3Url; break;
+                case ExigoApiContextSource.Live:
+                    sourceUrl = GlobalSettings.ExigoApiSettings.OData.LiveUrl;
+                    break;
+                case ExigoApiContextSource.Sandbox1:
+                    sourceUrl = GlobalSettings.ExigoApiSettings.OData.Sandbox1Url;
+                    break;
+                case ExigoApiContextSource.Sandbox2:
+                    sourceUrl = GlobalSettings.ExigoApiSettings.OData.Sandbox2Url;
+                    break;
+                case ExigoApiContextSource.Sandbox3:
+                    sourceUrl = GlobalSettings.ExigoApiSettings.OData.Sandbox3Url;
+                    break;
             }
 
             var context = new ExigoContext(new Uri(sourceUrl + "/model"));
@@ -85,18 +101,29 @@ namespace ReplicatedSite
                     e.RequestHeaders.Add("Authorization", "Basic " + credentials);
             return context;
         }
-        #endregion 
+        #endregion
 
+        #region Sql Context
         public static SqlConnection CreateSqlDapperContext()
         {
             return new SqlConnection(GlobalSettings.ConnectionStrings.Sql);
         }
+        public static SqlConnection CreateSqlDapperContext(string connectionString)
+        {
+            return new SqlConnection(connectionString);
+        }
+        #endregion
 
         public static ExigoPaymentApi CreatePaymentContext()
         {
             return new ExigoPaymentApi();
         }
-        #endregion Contexts
+
+        public static ExigoImageApi CreateImagesContext()
+        {
+            return new ExigoImageApi();
+        }
+        #endregion
     }
 
     #region Supporting Classes
@@ -142,16 +169,17 @@ namespace ReplicatedSite
             try
             {
                 var response = (HttpWebResponse)request.GetResponse();
-                using (var responseStream = new StreamReader(response.GetResponseStream()))
+                using(var responseStream = new StreamReader(response.GetResponseStream()))
                 {
                     return XDocument.Parse(responseStream.ReadToEnd());
                 }
             }
-            catch (WebException ex)
+            catch(WebException ex)
             {
                 var response = (HttpWebResponse)ex.Response;
-                if (response.StatusCode == HttpStatusCode.Unauthorized) throw new Exception("Invalid Credentials");
-                using (var responseStream = new StreamReader(ex.Response.GetResponseStream()))
+                if(response.StatusCode == HttpStatusCode.Unauthorized)
+                    throw new Exception("Invalid Credentials");
+                using(var responseStream = new StreamReader(ex.Response.GetResponseStream()))
                 {
                     XNamespace ns = "http://schemas.microsoft.com/ws/2005/05/envelope/none";
                     XDocument doc = XDocument.Parse(responseStream.ReadToEnd());
@@ -160,8 +188,26 @@ namespace ReplicatedSite
             }
         }
     }
-    #endregion Supporting Classes
 
+    public class ExigoImageApi
+    {
+        public void SaveImage(string path, string filename, byte[] contents)
+        {
+            var request = (HttpWebRequest)WebRequest.Create("http://api.exigo.com/4.0/" + GlobalSettings.ExigoApiCredentials.CompanyKey + "/images" + (path.StartsWith("/") ? "" : "/") + path + "/" + filename);
+            request.Headers.Add("Authorization", "Basic " + Convert.ToBase64String(Encoding.ASCII.GetBytes(GlobalSettings.ExigoApiCredentials.LoginName + ":" + GlobalSettings.ExigoApiCredentials.Password)));
+            request.Method = "POST";
+            request.ContentLength = contents.Length;
+            var writer = request.GetRequestStream();
+            writer.Write(contents, 0, contents.Length);
+            writer.Close();
+            var response = (HttpWebResponse)request.GetResponse();
+        }
+    }
+    #endregion
+}
+
+namespace ReplicatedSite.Exigo.Api
+{
     public enum ExigoApiContextSource
     {
         Live,

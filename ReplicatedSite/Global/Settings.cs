@@ -1,4 +1,5 @@
-﻿using ReplicatedSite.Models;
+﻿using ReplicatedSite.Exigo.Api;
+using ReplicatedSite.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;

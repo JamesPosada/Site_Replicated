@@ -1,8 +1,5 @@
-// Libraries
-@import "lib/_mixins";
-@import "lib/_bootstrap";
-@import "lib/_bootstrap-responsive";
-@import "lib/_jquery-ui";
+// Mixins
+@import "vendor/_mixins";
 
-// Grids
-@import "lib/_row-fluid-24";
+// Icons
+@import "icons/_fontawesome";

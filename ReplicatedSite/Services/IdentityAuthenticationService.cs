@@ -21,7 +21,7 @@ namespace ReplicatedSite.Services
                 try
                 {
                     // Replicated SQL
-                    var context = ExigoApiContext.CreateSqlDapperContext();
+                    var context = ExigoApiFactory.CreateSqlDapperContext();
                     identity = context.Query<Identity>(@"
                             SELECT
                                 cs.CustomerID,

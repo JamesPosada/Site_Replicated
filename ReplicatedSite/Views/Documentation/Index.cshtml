@@ -2,8 +2,10 @@
     ViewBag.Title = "Index";
 }
 
-<div class="row-fluid">
-    <div class="span3">
+<div class="space-20"></div>
+
+<div class="row">
+    <div class="col-sm-3">
         <div data-spy="affix">
             <div class="well well-small">
 
@@ -34,7 +36,7 @@
             </div>
         </div>
     </div>
-    <div class="span9">
+    <div class="col-sm-9">
 
         <a name="overview"></a>
         <h2>Overview</h2>
@@ -207,8 +209,8 @@ var periodTypeID = PeriodTypes.Monthly;
         <p>We have a few helpers found in the <code>Helpers</code> folder that you might want to take advantage of (we do!)</p>
         <ul>
             <li><strong>Dapper Dot Net</strong> (<a href="https://code.google.com/p/dapper-dot-net/" target="_blank">https://code.google.com/p/dapper-dot-net/</a>)<br />
-                A simple object mapper for .NET. You can create a Dapper <code>SqlConnection</code> object using our <code>ExigoApiContext</code> factory:<br />
-                <code>var context = ExigoApiContext.CreateSqlDapperContext();</code>
+                A simple object mapper for .NET. You can create a Dapper <code>SqlConnection</code> object using our <code>ExigoApiFactory</code> factory:<br />
+                <code>var context = ExigoApiFactory.CreateSqlDapperContext();</code>
             </li>
             <li><strong>SqlHelper</strong><br />
                 Our own helper class that makes pulling SQL trivial.
@@ -229,26 +231,26 @@ var periodTypeID = PeriodTypes.Monthly;
         <h2>Services</h2>
         <p>We have a few services found in the <code>Services</code> folder.</p>
         <ul>
-            <li><strong>ExigoApiServices</strong><br />
+            <li><strong>ExigoApiFactory</strong><br />
                 This factory creates Exigo API contexts for you. Here are some examples:<br />
                 <pre>
 // Create a web service context
-var context = ExigoApiContext.CreateWebServiceContext();
+var context = ExigoApiFactory.CreateWebServiceContext();
 
 // Create a web service context for a sandbox environment
-var context = ExigoApiContext.CreateWebServiceContext(ExigoApiContextSource.Sandbox1);
+var context = ExigoApiFactory.CreateWebServiceContext(ExigoApiFactorySource.Sandbox1);
 
 // Create an OData context
-var context = ExigoApiContext.CreateODataContext();
+var context = ExigoApiFactory.CreateODataContext();
 
 // Create an OData context for a sandbox environment
-var context = ExigoApiContext.CreateODataContext(ExigoApiContextSource.Sandbox1);
+var context = ExigoApiFactory.CreateODataContext(ExigoApiFactorySource.Sandbox1);
 
 // Create a Dapper context to communicate with your replicated SQL
-var context = ExigoApiContext.CreateSqlDapperContext();
+var context = ExigoApiFactory.CreateSqlDapperContext();
 
 // Create a payments context
-var context = ExigoApiContext.CreatePaymentContext();</pre>
+var context = ExigoApiFactory.CreatePaymentContext();</pre>
             </li>
             <li><strong>GlobalResourcesToJavaScriptService</strong><br />
                 Translates a global resource of your choosing to a JSON object. For example, to translate a global resource file in the GlobalResources folder called "Labels.resx" to a Javascript object found in "resources.labels", you would include this in your header:<br />

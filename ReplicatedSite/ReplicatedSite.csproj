@@ -145,6 +145,7 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImagesController.cs" />
+    <Compile Include="Factories\ExigoApiFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -170,7 +171,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.datasvcmap</DependentUpon>
     </Compile>
-    <Compile Include="Services\ExigoApiServices.cs" />
+    <Compile Include="Services\GlobalResourcesToJavaScriptService.cs" />
     <Compile Include="Services\IdentityAuthenticationService.cs" />
     <Compile Include="Web References\Exigo.WebService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -182,6 +183,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="apple-touch-icon-114x114.png" />
+    <Content Include="apple-touch-icon-120x120.png" />
+    <Content Include="apple-touch-icon-144x144.png" />
+    <Content Include="apple-touch-icon-152x152.png" />
+    <Content Include="apple-touch-icon-57x57.png" />
+    <Content Include="apple-touch-icon-72x72.png" />
+    <Content Include="apple-touch-icon-76x76.png" />
+    <Content Include="apple-touch-icon.png" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\images\jquery-ui\animated-overlay.gif" />
@@ -199,42 +208,56 @@
     <Content Include="Content\images\jquery-ui\ui-icons_ef8c08_256x240.png" />
     <Content Include="Content\images\jquery-ui\ui-icons_ffd27a_256x240.png" />
     <Content Include="Content\images\jquery-ui\ui-icons_ffffff_256x240.png" />
-    <Content Include="Content\scripts\lib\bootstrap.js" />
-    <Content Include="Content\scripts\lib\handlebars.js" />
-    <Content Include="Content\scripts\lib\jquery-easing.js" />
-    <Content Include="Content\scripts\lib\jquery-ui.js" />
-    <Content Include="Content\scripts\lib\jquery.js" />
-    <Content Include="Content\scripts\lib\modernizr.js" />
-    <Content Include="Content\scripts\plugins\jquery.validationEngine\contrib\other-validations.js" />
-    <Content Include="Content\scripts\plugins\jquery.validationEngine\jquery.validationEngine.css" />
-    <Content Include="Content\scripts\plugins\jquery.validationEngine\jquery.validationEngine.js" />
-    <Content Include="Content\scripts\plugins\jquery.validationEngine\languages\jquery.validationEngine-cz.js" />
-    <Content Include="Content\scripts\plugins\jquery.validationEngine\languages\jquery.validationEngine-da.js" />
-    <Content Include="Content\scripts\plugins\jquery.validationEngine\languages\jquery.validationEngine-de.js" />
-    <Content Include="Content\scripts\plugins\jquery.validationEngine\languages\jquery.validationEngine-en.js" />
-    <Content Include="Content\scripts\plugins\jquery.validationEngine\languages\jquery.validationEngine-es.js" />
-    <Content Include="Content\scripts\plugins\jquery.validationEngine\languages\jquery.validationEngine-et.js" />
-    <Content Include="Content\scripts\plugins\jquery.validationEngine\languages\jquery.validationEngine-fa.js" />
-    <Content Include="Content\scripts\plugins\jquery.validationEngine\languages\jquery.validationEngine-fi.js" />
-    <Content Include="Content\scripts\plugins\jquery.validationEngine\languages\jquery.validationEngine-fr.js" />
-    <Content Include="Content\scripts\plugins\jquery.validationEngine\languages\jquery.validationEngine-hr.js" />
-    <Content Include="Content\scripts\plugins\jquery.validationEngine\languages\jquery.validationEngine-hu.js" />
-    <Content Include="Content\scripts\plugins\jquery.validationEngine\languages\jquery.validationEngine-it.js" />
-    <Content Include="Content\scripts\plugins\jquery.validationEngine\languages\jquery.validationEngine-ja.js" />
-    <Content Include="Content\scripts\plugins\jquery.validationEngine\languages\jquery.validationEngine-nl.js" />
-    <Content Include="Content\scripts\plugins\jquery.validationEngine\languages\jquery.validationEngine-no.js" />
-    <Content Include="Content\scripts\plugins\jquery.validationEngine\languages\jquery.validationEngine-pl.js" />
-    <Content Include="Content\scripts\plugins\jquery.validationEngine\languages\jquery.validationEngine-pt.js" />
-    <Content Include="Content\scripts\plugins\jquery.validationEngine\languages\jquery.validationEngine-pt_BR.js" />
-    <Content Include="Content\scripts\plugins\jquery.validationEngine\languages\jquery.validationEngine-ro.js" />
-    <Content Include="Content\scripts\plugins\jquery.validationEngine\languages\jquery.validationEngine-ru.js" />
-    <Content Include="Content\scripts\plugins\jquery.validationEngine\languages\jquery.validationEngine-se.js" />
-    <Content Include="Content\scripts\plugins\jquery.validationEngine\languages\jquery.validationEngine-tr.js" />
-    <Content Include="Content\scripts\plugins\jquery.validationEngine\languages\jquery.validationEngine-vi.js" />
-    <Content Include="Content\scripts\plugins\jquery.validationEngine\languages\jquery.validationEngine-zh_CN.js" />
-    <Content Include="Content\scripts\plugins\jquery.validationEngine\languages\jquery.validationEngine-zh_TW.js" />
-    <Content Include="Content\styles\site.css" />
-    <Content Include="Content\styles\site.min.css" />
+    <Content Include="Content\scripts\app\app.js" />
+    <Content Include="Content\scripts\app\bindings.js" />
+    <Content Include="Content\scripts\app\custom.js" />
+    <Content Include="Content\scripts\vendor\bootstrap.js" />
+    <Content Include="Content\scripts\vendor\excanvas.js" />
+    <Content Include="Content\scripts\vendor\handlebars.js" />
+    <Content Include="Content\scripts\vendor\html5shiv.js" />
+    <Content Include="Content\scripts\vendor\jquery.js" />
+    <Content Include="Content\scripts\vendor\modernizr.js" />
+    <Content Include="Content\scripts\vendor\jquery.validationEngine\contrib\other-validations.js" />
+    <Content Include="Content\scripts\vendor\jquery.validationEngine\jquery.validationEngine.css" />
+    <Content Include="Content\scripts\vendor\jquery.validationEngine\jquery.validationEngine.js" />
+    <Content Include="Content\scripts\vendor\jquery.validationEngine\languages\jquery.validationEngine-cz.js" />
+    <Content Include="Content\scripts\vendor\jquery.validationEngine\languages\jquery.validationEngine-da.js" />
+    <Content Include="Content\scripts\vendor\jquery.validationEngine\languages\jquery.validationEngine-de.js" />
+    <Content Include="Content\scripts\vendor\jquery.validationEngine\languages\jquery.validationEngine-en.js" />
+    <Content Include="Content\scripts\vendor\jquery.validationEngine\languages\jquery.validationEngine-es.js" />
+    <Content Include="Content\scripts\vendor\jquery.validationEngine\languages\jquery.validationEngine-et.js" />
+    <Content Include="Content\scripts\vendor\jquery.validationEngine\languages\jquery.validationEngine-fa.js" />
+    <Content Include="Content\scripts\vendor\jquery.validationEngine\languages\jquery.validationEngine-fi.js" />
+    <Content Include="Content\scripts\vendor\jquery.validationEngine\languages\jquery.validationEngine-fr.js" />
+    <Content Include="Content\scripts\vendor\jquery.validationEngine\languages\jquery.validationEngine-hr.js" />
+    <Content Include="Content\scripts\vendor\jquery.validationEngine\languages\jquery.validationEngine-hu.js" />
+    <Content Include="Content\scripts\vendor\jquery.validationEngine\languages\jquery.validationEngine-it.js" />
+    <Content Include="Content\scripts\vendor\jquery.validationEngine\languages\jquery.validationEngine-ja.js" />
+    <Content Include="Content\scripts\vendor\jquery.validationEngine\languages\jquery.validationEngine-nl.js" />
+    <Content Include="Content\scripts\vendor\jquery.validationEngine\languages\jquery.validationEngine-no.js" />
+    <Content Include="Content\scripts\vendor\jquery.validationEngine\languages\jquery.validationEngine-pl.js" />
+    <Content Include="Content\scripts\vendor\jquery.validationEngine\languages\jquery.validationEngine-pt.js" />
+    <Content Include="Content\scripts\vendor\jquery.validationEngine\languages\jquery.validationEngine-pt_BR.js" />
+    <Content Include="Content\scripts\vendor\jquery.validationEngine\languages\jquery.validationEngine-ro.js" />
+    <Content Include="Content\scripts\vendor\jquery.validationEngine\languages\jquery.validationEngine-ru.js" />
+    <Content Include="Content\scripts\vendor\jquery.validationEngine\languages\jquery.validationEngine-se.js" />
+    <Content Include="Content\scripts\vendor\jquery.validationEngine\languages\jquery.validationEngine-tr.js" />
+    <Content Include="Content\scripts\vendor\jquery.validationEngine\languages\jquery.validationEngine-vi.js" />
+    <Content Include="Content\scripts\vendor\jquery.validationEngine\languages\jquery.validationEngine-zh_CN.js" />
+    <Content Include="Content\scripts\vendor\jquery.validationEngine\languages\jquery.validationEngine-zh_TW.js" />
+    <Content Include="Content\scripts\vendor\respond.js" />
+    <Content Include="Content\styles\bootstrap.css" />
+    <Content Include="Content\styles\bootstrap.min.css" />
+    <Content Include="Content\styles\fonts\segoeui\SegoeUILight.svg" />
+    <Content Include="Content\styles\icons\fontawesome\fontawesome-webfont.svg" />
+    <Content Include="Content\styles\scaffolding.css" />
+    <Content Include="Content\styles\scaffolding.min.css" />
+    <Content Include="Content\styles\site.css">
+      <DependentUpon>site.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\site.min.css">
+      <DependentUpon>site.scss</DependentUpon>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -628,11 +651,6 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\styles\lib\_bootstrap-responsive.scss" />
-    <Content Include="Content\styles\lib\_bootstrap.scss" />
-    <Content Include="Content\styles\lib\_jquery-ui.scss" />
-    <Content Include="Content\styles\lib\_mixins.scss" />
-    <Content Include="Content\styles\lib\_row-fluid-24.scss" />
     <Content Include="Content\styles\site.scss" />
   </ItemGroup>
   <ItemGroup>
@@ -673,6 +691,33 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Documentation\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\scripts\app\Resource.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\styles\bootstrap.scss" />
+    <Content Include="Content\styles\scaffolding.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\styles\icons\fontawesome\fontawesome-webfont.eot" />
+    <Content Include="Content\styles\icons\fontawesome\fontawesome-webfont.ttf" />
+    <Content Include="Content\styles\icons\fontawesome\fontawesome-webfont.woff" />
+    <Content Include="Content\styles\icons\fontawesome\FontAwesome.otf" />
+    <Content Include="Content\styles\icons\_fontawesome.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\styles\vendor\_mixins.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\styles\fonts\opensans\opensans-italic.woff" />
+    <Content Include="Content\styles\fonts\opensans\opensans-light.woff" />
+    <Content Include="Content\styles\fonts\opensans\opensans.woff" />
+    <Content Include="Content\styles\fonts\segoeui\SegoeUILight.eot" />
+    <Content Include="Content\styles\fonts\segoeui\SegoeUILight.ttf" />
+    <Content Include="Content\styles\fonts\segoeui\SegoeUILight.woff" />
+    <Content Include="Content\styles\fonts\_opensans.scss" />
+    <Content Include="Content\styles\fonts\_segoeui.scss" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
