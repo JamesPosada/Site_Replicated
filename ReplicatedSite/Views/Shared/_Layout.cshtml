@@ -38,7 +38,6 @@
     <!--[if lte IE 8]>
         <script src="~/Content/scripts/vendor/excanvas.js"></script>
     <![endif]-->
-
     @RenderSection("header", required: false)
 </head>
 <body>
@@ -59,8 +58,28 @@
                     <li><a href="@Url.Action("about", "home")">About</a></li>
                 </ul>
                 <ul class="nav navbar-nav pull-right">
-                    <li><a href="@Url.Action("index", "home")">My Account</a></li>
+                    <li class="dropdown">
+                        <a href="@Url.Action("index", "account")" class="dropdown-toggle" data-toggle="dropdown">My Account <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            @if (!Request.IsAuthenticated)
+                            {
+                                <li><div style="padding: 5px 10px;"><a href="@Url.Action("login", "account")" class="btn btn-primary btn-block">Sign In</a></div></li>
+                                <li class="divider"></li>
+                            }
+                            <li><a href="@Url.Action("index", "account")">Your Account</a></li>
+                            <li><a href="@Url.Action("orders", "account")">Your Orders</a></li>
+                            <li><a href="@Url.Action("wishlist", "account")">Your Wish List</a></li>
+                            @if (Request.IsAuthenticated)
+                            {
+                                <li class="divider"></li>
+                                <li><a href="@Url.Action("logout", "account")">Sign Out</a></li>
+                            }
+                        </ul>
+                    </li>
                 </ul>
+
+
+
             </div>
         </div>
     </nav>

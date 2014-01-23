@@ -67,6 +67,11 @@ namespace ReplicatedSite
             public static int IdentityRefreshInterval               = 15; // In minutes
         }
 
+        public static class BackofficeSettings
+        {
+            public static int SessionTimeoutInMinutes               = 30;
+        }
+
         public static class Markets
         {
             public static string MarketCookieName                   = "SelectedMarket";

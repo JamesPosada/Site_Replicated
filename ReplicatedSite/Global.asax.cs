@@ -35,11 +35,12 @@ namespace ReplicatedSite
             // Get the route data
             var routeData = RouteTable.Routes.GetRouteData(new HttpContextWrapper(HttpContext.Current));
             var url = HttpContext.Current.Request.RawUrl;
+            if (routeData.Values.Count == 1 && routeData.Values["requestId"] != null) return;
 
 
             // Determine if we need to do any logic here.
             // If we have an identity and the current identity matches the web alias in the routes, stop here.
-            var identity = HttpContext.Current.Items["WebIdentity"] as Identity;
+            var identity = HttpContext.Current.Items["OwnerWebIdentity"] as OwnerIdentity;
             if(identity != null && identity.WebAlias.Equals(routeData.Values["webalias"].ToString(), StringComparison.InvariantCultureIgnoreCase))
             {
                 return;
@@ -74,6 +75,7 @@ namespace ReplicatedSite
                 HttpContext.Current.Response.Redirect(defaultPage);
             }
 
+            if (routeData.Values["webalias"] == null) return;
             var currentWebAlias     = routeData.Values["webalias"].ToString();
 
 
@@ -92,8 +94,8 @@ namespace ReplicatedSite
 
 
             // Attempt to authenticate the web alias,
-            HttpContext.Current.Items["WebIdentity"] = IdentityAuthenticationService.GetIdentity(currentWebAlias);
-            if(HttpContext.Current.Items["WebIdentity"] != null)
+            HttpContext.Current.Items["OwnerWebIdentity"] = IdentityAuthenticationService.GetIdentity(currentWebAlias);
+            if (HttpContext.Current.Items["OwnerWebIdentity"] != null)
             {
                 if(GlobalSettings.ReplicatedSite.RememberLastWebAliasVisited)
                 {

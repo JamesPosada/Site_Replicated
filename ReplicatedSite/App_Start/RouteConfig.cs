@@ -14,10 +14,21 @@ namespace ReplicatedSite
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRouteLowerCase(
+                name: "Error Pages",
+                url: "error/{view}",
+                defaults: new { controller = "error", action = "index", view = UrlParameter.Optional }
+            );
+
+            routes.MapRouteLowerCase(
+                name: "Account",
+                url: "account/{action}/{id}",
+                defaults: new { controller = "account", action = "index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRouteLowerCase(
                 name: "Default",
                 url: "{webalias}/{controller}/{action}/{id}",
-                defaults: new { webalias = "www", controller = "Home", action = "Index", id = UrlParameter.Optional },
-                namespaces: new[] { "ReplicatedSite.Controllers" }
+                defaults: new { webalias = "www", controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
@@ -57,92 +68,66 @@ namespace ReplicatedSite
         }
     }
 
-    public static class RouteCollectionExtensions
+    public static class RouteCollectionExtension
     {
-        public static Route MapRouteLowerCase(this RouteCollection routes, string name, string url)
-        {
-            return MapRouteLowerCase(routes, name, url, null, null, null);
-        }
-        public static Route MapRouteLowerCase(this RouteCollection routes, string name, string url, string[] namespaces)
-        {
-            return MapRouteLowerCase(routes, name, url, null, null, namespaces);
-        }
         public static Route MapRouteLowerCase(this RouteCollection routes, string name, string url, object defaults)
         {
-            return MapRouteLowerCase(routes, name, url, defaults, null, null);
-        }
-        public static Route MapRouteLowerCase(this RouteCollection routes, string name, string url, object defaults, string[] namespaces)
-        {
-            return MapRouteLowerCase(routes, name, url, defaults, null, namespaces);
+            return routes.MapRouteLowerCase(name, url, defaults, null);
         }
         public static Route MapRouteLowerCase(this RouteCollection routes, string name, string url, object defaults, object constraints)
         {
-            return MapRouteLowerCase(routes, name, url, defaults, constraints, null);
+            Route route = new LowercaseRoute(url, new MvcRouteHandler())
+            {
+                Defaults = new RouteValueDictionary(defaults),
+                Constraints = new RouteValueDictionary(constraints)
+            };
+            routes.Add(name, route);
+            return route;
         }
-        public static Route MapRouteLowerCase(this RouteCollection routes, string name, string url, object defaults, object constraints, string[] namespaces)
+        public static Route MapRouteLowerCase(this RouteCollection routes, string name, string url, string area, object defaults)
         {
-            if (routes == null)
-            {
-                throw new ArgumentNullException("routes");
-            }
-
-            if (url == null)
-            {
-                throw new ArgumentNullException("url");
-            }
-
-            var route = new LowercaseRoute(url, new MvcRouteHandler())
+            return routes.MapRouteLowerCase(name, url, area, defaults, null);
+        }
+        public static Route MapRouteLowerCase(this RouteCollection routes, string name, string url, string area, object defaults, object constraints)
+        {
+            Route route = new LowercaseRoute(url, new MvcRouteHandler())
             {
                 Defaults = new RouteValueDictionary(defaults),
                 Constraints = new RouteValueDictionary(constraints),
-                DataTokens = new RouteValueDictionary(namespaces),
+                DataTokens = new RouteValueDictionary(new { area = area })
             };
-
-            if (namespaces != null && namespaces.Length > 0)
-            {
-                route.DataTokens["Namespaces"] = namespaces;
-            }
-
             routes.Add(name, route);
-
             return route;
         }
-    }
 
-    public static class AreaRegistrationContextExtensions
-    {
-        public static Route MapRouteLowerCase(this AreaRegistrationContext context, string name, string url)
-        {
-            return MapRouteLowerCase(context, name, url, null, null, null);
-        }
         public static Route MapRouteLowerCase(this AreaRegistrationContext context, string name, string url, object defaults)
         {
-            return MapRouteLowerCase(context, name, url, defaults, null, null);
-        }
-        public static Route MapRouteLowerCase(this AreaRegistrationContext context, string name, string url, string[] namespaces)
-        {
-            return MapRouteLowerCase(context, name, url, null, null, namespaces);
+            return context.MapRouteLowerCase(name, url, defaults, null);
         }
         public static Route MapRouteLowerCase(this AreaRegistrationContext context, string name, string url, object defaults, object constraints)
         {
-            return MapRouteLowerCase(context, name, url, defaults, constraints, null);
-        }
-        public static Route MapRouteLowerCase(this AreaRegistrationContext context, string name, string url, object defaults, string[] namespaces)
-        {
-            return MapRouteLowerCase(context, name, url, defaults, null, namespaces);
-        }
-        public static Route MapRouteLowerCase(this AreaRegistrationContext context, string name, string url, object defaults, object constraints, string[] namespaces)
-        {
-            if (namespaces == null && context.Namespaces != null)
+            Route route = new LowercaseRoute(url, new MvcRouteHandler())
             {
-                namespaces = context.Namespaces.ToArray();
-            }
-
-            Route route = context.Routes.MapRouteLowerCase(name, url, defaults, constraints, namespaces);
-
-            route.DataTokens["area"] = context.AreaName;
-            route.DataTokens["UseNamespaceFallback"] = (namespaces == null || namespaces.Length == 0);
-
+                Defaults = new RouteValueDictionary(defaults),
+                DataTokens = new RouteValueDictionary(new { area = context.AreaName }),
+                Constraints = new RouteValueDictionary(constraints)
+            };
+            context.Routes.Add(name, route);
+            return route;
+        }
+        public static Route MapRouteLowerCase(this AreaRegistrationContext context, string name, string url, string area, object defaults)
+        {
+            return context.MapRouteLowerCase(name, url, area, defaults, null);
+        }
+        public static Route MapRouteLowerCase(this AreaRegistrationContext context, string name, string url, string area, object defaults, object constraints)
+        {
+            Route route = new LowercaseRoute(url, new MvcRouteHandler())
+            {
+                Defaults = new RouteValueDictionary(defaults),
+                DataTokens = new RouteValueDictionary(new { area = area }),
+                Constraints = new RouteValueDictionary(constraints)
+            };
+            context.Routes.Add(name, route);
             return route;
         }
     }

@@ -3,6 +3,258 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Welcome to @Identity.Current.FirstName's website!</h2>
+<h2>Welcome to @Identity.Owner.FirstName's website!</h2>
 
 <p><a href="@Url.Action("Index", "Documentation")" class="btn btn-default">View documentation</a></p>
+
+
+<hr />
+
+
+<link href="~/Content/styles/nav.css" rel="stylesheet" />
+
+
+<div class="relative">
+    <nav id="site-navigation">
+        <ul id="main-links">
+            <li data-key="home">
+                <a href="Home.aspx" class="single-link"><span class="glyphicon-home"></span>Home</a>
+            </li>
+            <li data-key="dashboard">
+                <a href="Dashboard.aspx" class="single-link"><span class="glyphicon-globe"></span>Dashboard</a>
+            </li>
+            <li data-key="earnings">
+                <a><span class="glyphicon-usd"></span>My Earnings</a>
+                <nav>
+                    <h3>My Earnings</h3>
+                    <ul>
+                        <li data-key="commissionsummary"><a href="Commissions.aspx">Commission Summary</a></li>
+                        <li data-key="activity"><a href="Activity.aspx">Activity</a></li>
+                        <li data-key="paycard"><a href="PayCard.aspx">Pay Card</a></li>
+                    </ul>
+                </nav>
+            </li>
+            <li data-key="team">
+                <a><span class="limuicon-limu"></span>My Team</a>
+                <nav>
+                    <h3>My Team</h3>
+                    <ul>
+                        <li data-key="waitingroom"><a href="WaitingRoom.aspx">Waiting Room</a></li>
+                        <li data-key="genealogy"><a href="Genealogy.aspx">Genealogy</a></li>
+                        <li data-key="anniversaries"><a href="Anniversaries.aspx">Anniversaries</a></li>
+                        <li data-key="enroller"><a href="EnrollerReport.aspx">Enroller</a></li>
+                        <li data-key="closetoreport"><a href="CloseToReport.aspx">Close-To Report</a></li>
+                        <li data-key="orders"><a href="OrdersReport.aspx">Orders</a></li>
+                        <li data-key="autoships"><a href="AutoshipReport.aspx">Autoships</a></li>
+                        <li data-key="downlineemail"><a href="DownlineEmail.aspx">Downline Email</a></li>
+                    </ul>
+                </nav>
+            </li>
+            <li data-key="recognition">
+                <a><span class="glyphicon-cup"></span>Recognition</a>
+                <nav>
+                    <h3>Recognition</h3>
+                    <ul>
+                        <li data-key="newmembers"><a href="NewMembers.aspx">New Members</a></li>
+                    </ul>
+                </nav>
+            </li>
+            <li data-key="shop">
+                <a><span class="glyphicon-shopping-bag"></span>Shop</a>
+                <nav>
+                    <h3>Shop</h3>
+                    <ul>
+                        <li data-key="mobile"><a href="Mobile.aspx">Mobile</a></li>
+                        <li data-key="orderhistory"><a href="OrderHistory.aspx">Order History</a></li>
+                        <li data-key="placeorder"><a href="ShoppingProductList.aspx">Place Order</a></li>
+                        <li data-key="myautoship"><a href="MyAutoships.aspx">My Autoship</a></li>
+                        <li><a href="http://www.limugear.com" target="_blank">LimuGear.com</a></li>
+                    </ul>
+                </nav>
+            </li>
+            <li data-key="events">
+                <a><span class="glyphicon-google-maps"></span>Events</a>
+                <nav>
+                    <h3>Events</h3>
+                    <ul>
+                        <li data-key="pastevents"><a href="PastEvents.aspx">Past Events</a></li>
+                        <li data-key="calendar"><a href="Calendar.aspx">Calendar</a></li>
+                    </ul>
+                </nav>
+            </li>
+            <li data-key="community">
+                <a><span class="glyphicon-group"></span>Community</a>
+                <nav>
+                    <h3>Community</h3>
+                    <ul>
+                        <li data-key="communitypeople"><a href="CommunityPeople.aspx">People</a></li>
+                        <li data-key="communityphotos"><a href="CommunityPhotos.aspx">Photos</a></li>
+                        <li data-key="communitygoals"><a href="CommunityGoals.aspx">Goals</a></li>
+                        <li data-key="communityvideos"><a href="CommunityVideos.aspx">Videos</a></li>
+                    </ul>
+                </nav>
+            </li>
+            <li data-key="profile">
+                <a><span class="glyphicon-user"></span>Profile</a>
+                <nav>
+                    <h3>Profile</h3>
+                    <ul>
+                        <li data-key="mypeople"><a href="MyPeople.aspx">My People</a></li>
+                        <li data-key="mygoals"><a href="MyGoals.aspx">My Goals</a></li>
+                        <li data-key="myphotos"><a href="MyPhotos.aspx">My Photos</a></li>
+                        <li data-key="myvideos"><a href="MyVideos.aspx">My Videos</a></li>
+                    </ul>
+                </nav>
+            </li>
+            <li data-key="training">
+                <a><span class="glyphicon-dumbbell"></span>Training</a>
+                <nav>
+                    <h3>Training</h3>
+                    <ul>
+                        <li><a href="http://limunation.com/regional-training-events/" target="_blank">IamLimu.com Training</a></li>
+                        <li><a href="http://limunation.com/limu-live/" target="_blank">Limu Live</a></li>
+                        <li data-key="resourcelibrary"><a href="ResourceLibrary.aspx">Resource Library</a></li>
+                        <li data-key="resourcelibrarymanage"><a href="ResourceLibraryManage.aspx">Manage Resource Library</a></li>
+                    </ul>
+                </nav>
+            </li>
+
+            <a class="toggle" data-role="collapse"><span class="fa-arrow-circle-left"></span></a>
+        </ul>
+
+        <nav id="sub-links"></nav>
+    </nav>
+    
+    <main id="site-content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.</p>
+    </main>
+
+</div>
+
+
+@section scripts
+{
+    <script>
+        (function () {
+
+            app.page = { active: 'shop' };
+
+            // Settings and Globals
+            var context = '#site-navigation',
+                $context = $(context),
+                state = {
+                    maincollapsed: false,
+                    subcollapsed: false
+                };
+
+
+            // Event Handlers
+            function registerEventHandlers() {
+
+                // Clicking main links
+                $('li[data-key] > a', $context).on('click', function (event) {
+                
+                    // If this is actually a link, stop here.
+                    if ($(this).attr('href')) return;
+
+                    // Get the key
+                    var key = $(this).parent('li').data('key');
+
+                    // Select the main link
+                    actions.selectMainLink(key);
+                });
+
+                // Collapse toggling
+                $('[data-role="collapse"]', $context).on('click', function () {
+                    actions.toggleMainLinksCollapse();
+                });
+            }
+
+
+            // Actions
+            var actions = {
+                selectMainLink: function (key) {
+
+                    // Ensure we have a key.
+                    key = key || app.page.active;
+
+                    $('li[data-key]', $context)
+                        .removeClass('active')
+                        .filter('[data-key="{0}"]'.format(key))
+                        .addClass('active');
+
+                    actions.populateSubLinks(key);
+                },
+                populateSubLinks: function (key) {
+                    var $listitem = $('li[data-key="{0}"]'.format(key), $context),
+                        $subnav = $listitem.children('nav');
+
+                    // Toggle the display of the sublinks and populate the HTML
+                    $('#sub-links').html($subnav.html() || '');
+
+                    actions.updateDisplay();
+                },
+                toggleMainLinksCollapse: function(collapse) {
+                    state.maincollapsed = (collapse) ? collapse : !state.maincollapsed;
+
+                    actions.updateDisplay();
+                },
+                updateDisplay: function () {
+
+                    // Determine if the sublinks should be collapsed
+                    state.subcollapsed = ($('#sub-links').html() == '');                    
+
+                    // Update the classes
+                    $('#site-navigation').toggleClass('main-collapsed', state.maincollapsed);
+                    $('#site-navigation').toggleClass('sub-empty', state.subcollapsed);
+                },
+                addTransitions: function () {
+                    $('#site-navigation, #main-links, #sub-links').addClass('transitioned');
+                }
+            };
+
+
+            // Initialization
+            function init() {
+                registerEventHandlers();
+
+                actions.selectMainLink();
+
+                setTimeout(function () {
+                    actions.addTransitions();
+                }, 0);
+            }
+            init();
+
+        })();
+    </script>
+}

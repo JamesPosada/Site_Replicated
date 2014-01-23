@@ -8,8 +8,8 @@ namespace ReplicatedSite.Models
 {
     public class WebPrincipal : IPrincipal
     {
-        Identity _identity;
-        public WebPrincipal(Identity identity)
+        CustomerIdentity _identity;
+        public WebPrincipal(CustomerIdentity identity)
         {
             _identity = identity;
         }

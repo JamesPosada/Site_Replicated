@@ -15,7 +15,7 @@ namespace ReplicatedSite.Controllers
         {
             var url = string.Format("http://api.exigo.com/4.0/{0}/customerimages/{1}{2}", 
                     GlobalSettings.ExigoApiCredentials.CompanyKey, 
-                    Identity.Current.WebAlias,
+                    Identity.Owner.WebAlias,
                     (!cache) ? "?s=" + Guid.NewGuid().ToString().ToLower() : string.Empty);
 
             return Website(url);
@@ -24,8 +24,8 @@ namespace ReplicatedSite.Controllers
         public FileStreamResult Image2(bool cache = true)
         {
             var url = string.Format("http://api.exigo.com/4.0/{0}/customerimages/{1}/2{2}", 
-                    GlobalSettings.ExigoApiCredentials.CompanyKey, 
-                    Identity.Current.WebAlias,
+                    GlobalSettings.ExigoApiCredentials.CompanyKey,
+                    Identity.Owner.WebAlias,
                     (!cache) ? "?s=" + Guid.NewGuid().ToString().ToLower() : string.Empty);
 
             return Website(url);
@@ -60,8 +60,8 @@ namespace ReplicatedSite.Controllers
 
             var result = new FileStreamResult(imageStream, "image/jpeg");
 
-            result.FileDownloadName = string.Format("{0}.jpg", 
-                Identity.Current.WebAlias);
+            result.FileDownloadName = string.Format("{0}.jpg",
+                Identity.Owner.WebAlias);
             
             return result;
         }

@@ -16,7 +16,7 @@ namespace ReplicatedSite.HtmlHelpers
         /// <returns>The avatar photo's URL.</returns>
         public static string Avatar(this UrlHelper helper, int CustomerID = 0)
         {
-            if (CustomerID == 0) CustomerID = Identity.Current.CustomerID;
+            if (CustomerID == 0) CustomerID = Identity.Owner.CustomerID;
 
             return helper.Action("Avatar", "App", new { id = CustomerID });
         }

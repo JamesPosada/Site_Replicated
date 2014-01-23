@@ -1345,3 +1345,34 @@
 .fa-plus-square-o:before {
   content: "\f196"; }
 
+.uppercase {
+  text-transform: uppercase; }
+
+.text-larger {
+  font-size: 1.3em; }
+
+.text-smaller {
+  font-size: 0.7em; }
+
+.block {
+  display: block; }
+
+.well-transparent {
+  background-color: transparent; }
+
+.order-widget {
+  border: 1px solid #ddd;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  margin-bottom: 10px; }
+  .order-widget hr {
+    margin: 0; }
+  .order-widget .padded-container {
+    padding: 10px; }
+  .order-widget .items-container {
+    border-left: 1px dotted #ddd; }
+
+#view-account .orderlist .order-widget {
+  margin-bottom: 15px; }
+
