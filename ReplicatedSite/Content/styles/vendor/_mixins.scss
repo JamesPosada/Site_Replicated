@@ -1,0 +1,226 @@
+// Disable text highlighting
+@mixin disable-highlighting() {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+
+// Handle overflowing text
+@mixin text-overflow() {
+	overflow: hidden; 
+	-o-text-overflow: ellipsis;
+	text-overflow: ellipsis; 
+	white-space: nowrap;
+}
+
+
+// Transitions
+@mixin transition($transition...) {
+    -webkit-transition: $transition;
+    -moz-transition: $transition;
+    -o-transition: $transition;
+    transition: $transition;
+}
+
+
+// Border Radius
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+}
+
+// Border Radius
+@mixin border-top-left-radius($radius) {
+    -webkit-border-top-left-radius: $radius;
+    -moz-border-radius-topleft: $radius;
+    border-top-left-radius: $radius;
+}
+@mixin border-top-right-radius($radius) {
+    -webkit-border-top-right-radius: $radius;
+    -moz-border-radius-topright: $radius;
+    border-top-right-radius: $radius;
+}
+@mixin border-bottom-right-radius($radius) {
+    -webkit-border-bottom-right-radius: $radius;
+    -moz-border-radius-bottomright: $radius;
+    border-bottom-right-radius: $radius;
+}
+@mixin border-bottom-left-radius($radius) {
+    -webkit-border-bottom-left-radius: $radius;
+    -moz-border-radius-bottomleft: $radius;
+    border-bottom-left-radius: $radius;
+}
+@mixin border-top-radius($radius) {
+    @include border-top-right-radius($radius);
+    @include border-top-left-radius($radius);
+}
+@mixin border-right-radius($radius) {
+    @include border-top-right-radius($radius);
+    @include border-bottom-right-radius($radius);
+}
+@mixin border-bottom-radius($radius) {
+    @include border-bottom-right-radius($radius);
+    @include border-bottom-left-radius($radius);
+}
+@mixin border-left-radius($radius) {
+    @include border-top-left-radius($radius);
+    @include border-bottom-left-radius($radius);
+}
+
+
+// Animations
+@mixin animation($animation...) {
+   -moz-animation: $animation;
+    -webkit-animation: $animation;
+    -o-animation: $animation;
+    -ms-animation: $animation;
+    -khtml-animation: $animation;
+    animation: $animation;
+}
+
+
+// Drop shadows
+@mixin box-shadow($shadow...) {
+    -webkit-box-shadow: $shadow;
+    -moz-box-shadow: $shadow;
+    box-shadow: $shadow;
+}
+
+
+//  Opacity
+@mixin opacity($opacity) {
+  opacity: $opacity / 100;
+  filter: alpha(opacity=$opacity);
+}
+@mixin grayscale($gray) {
+  -webkit-filter: grayscale($gray);
+     -moz-filter: grayscale($gray);
+       -o-filter: grayscale($gray);
+      -ms-filter: grayscale($gray);
+          filter: grayscale($gray); 
+}
+
+
+// Bootstrap 3 Buttons
+@mixin button($name, $color, $textColor: #ffffff, $btn-3d-height: 4px) {
+	.btn-#{$name} { color: $textColor; background-color: $color; border-color: $color;
+		&:hover, &:focus, &:active, &.active { color: $textColor; background-color: darken($color, 5); border-color: darken($color, 5); }
+		&.btn-3d { box-shadow:0 0 0 1px $color inset, 0 0 0 2px rgba(255,255,255,0.15) inset, 0 $btn-3d-height 0 0 darken($color, 5), 0 $btn-3d-height 1px rgba(0,0,0,0.5);
+			&:active { box-shadow: none; }
+		}
+	}
+	.open .dropdown-toggle.btn-#{$name} { color: $textColor; background-color: darken($color, 5); border-color: darken($color, 5); }
+	.btn-#{$name}:active, .btn-#{$name}.active, .open .dropdown-toggle.btn-#{$name} { background-image: none; }
+	.btn-#{$name}.disabled,
+	.btn-#{$name}[disabled],
+	fieldset[disabled] .btn-#{$name},
+	.btn-#{$name}.disabled:hover,
+	.btn-#{$name}[disabled]:hover,
+	fieldset[disabled] .btn-#{$name}:hover,
+	.btn-#{$name}.disabled:focus,
+	.btn-#{$name}[disabled]:focus,
+	fieldset[disabled] .btn-#{$name}:focus,
+	.btn-#{$name}.disabled:active,
+	.btn-v[disabled]:active,
+	fieldset[disabled] .btn-#{$name}:active,
+	.btn-#{$name}.disabled.active,
+	.btn-#{$name}[disabled].active,
+	fieldset[disabled] .btn-#{$name}.active {
+		background-color: $color;
+		border-color: $color;
+	}
+}
+
+
+// Media Queries
+@mixin media($media) {
+	@if $media == phones {
+		@media only screen and (max-width: 768px) { @content; }
+	}
+	@else if $media == phonesandup {
+		@media only screen and (min-width: 769px) { @content; }
+	}
+	@else if $media == tablets {
+		@media only screen and (min-width: 769px) and (max-width: 991px) { @content; }
+	}
+	@else if $media == desktops {
+		@media only screen and (min-width: 992px) { @content; }
+	}
+	@else if $media == print {
+		@media only print { @content; }
+	}
+}
+
+
+// Grid Scaffolding
+@mixin grid($columns: 24) {
+
+	.row-#{$columns}, 
+	.form-group-#{$columns} { margin-right: 0; margin-left: 0;		
+		&:before,
+		&:after { display: table; content: " "; }
+		&:after { clear: both; }
+	}
+
+
+	// Initial State of all columns
+	@for $i from 1 through $columns {
+		.row-#{$columns} > .col-#{$i},
+		.form-group-#{$columns} > .col-#{$i} {
+			position: relative;
+			min-height: 1px;
+			padding-right: 0;
+			padding-left: 0;
+		}
+	}
+
+
+	// Column Padding
+	.row-#{$columns} > .col-padded,
+	.form-group-#{$columns} > .col-padded { padding: 8px; }
+
+
+	// Media Queries
+    @media (min-width: 768px) {
+        @for $i from 1 through ($columns - 1) {
+			.row-#{$columns} > .col-#{$i},
+			.form-group-#{$columns} > .col-#{$i}, { 
+				float: left;
+				padding-right: 8px;
+				padding-left: 8px;
+			}
+		}
+
+		.row-#{$columns} > [class^="col-"]:first-of-type,
+		.row-#{$columns} > [class*=" col-"]:first-of-type { padding-left: 0; }
+
+		.row-#{$columns} > [class^="col-"]:last-of-type,
+		.row-#{$columns} > [class*=" col-"]:last-of-type { padding-right: 0; }
+
+		@for $i from 1 through $columns {
+			.row-#{$columns} > .col-#{$i},
+			.form-group-#{$columns} > .col-#{$i} { 
+				width: (100% / $columns) * $i;
+			}
+		}
+		@for $i from 1 through ($columns - 1) {
+			.row-#{$columns} > .col-push-#{$i},
+			.form-group-#{$columns} > .col-push-#{$i} { 
+				left: (100% / $columns) * $i;
+			}
+			.row-#{$columns} > .col-pull-#{$i},
+			.form-group-#{$columns} > .col-pull-#{$i} { 
+				right: (100% / $columns) * $i;
+			}
+			.row-#{$columns} > .col-offset-#{$i},
+			.form-group-#{$columns} > .col-offset-#{$i} { 
+				margin-left: (100% / $columns) * $i;
+			}
+		}
+	}
+}
