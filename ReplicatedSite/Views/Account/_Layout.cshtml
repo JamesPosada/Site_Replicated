@@ -1,0 +1,43 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Your Account</h2>
+
+<ol class="breadcrumb">
+    <li class="active"><i class="fa-home"></i></li>
+</ol>
+
+
+<div id="view-account">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title"><a href="@Url.Action("index")">Your Account</a></h3></div>
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="@Url.Action("orders")">Orders</a></li>
+                    <li class="list-group-item"><a href="@Url.Action("addresses")">Addresses</a></li>
+                    <li class="list-group-item"><a href="@Url.Action("paymentoptions")">Payment Options</a></li>
+                    <li class="list-group-item"><a href="@Url.Action("settings")">Account Settings</a></li>
+                </ul>
+            </div>
+
+            <a href="javascript:;"><img src="http://placehold.it/300x150&text=Personalized Promotion" class="img-responsive img-rounded" /></a>
+            <div class="space-5"></div>
+            <a href="javascript:;"><img src="http://placehold.it/300x150&text=Personalized Promotion" class="img-responsive img-rounded" /></a>
+            <div class="space-5"></div>
+            <a href="javascript:;"><img src="http://placehold.it/300x150&text=Personalized Promotion" class="img-responsive img-rounded" /></a>
+
+        </div>
+        <div class="col-sm-9">
+
+            @RenderBody()
+
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    @RenderSection("scripts", false)
+}

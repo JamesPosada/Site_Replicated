@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Your Account";
+    Layout = "~/Views/Account/_Layout.cshtml";
+}
+
+
+<h3>Orders</h3>
+
+<div class="row">
+    <div class="col-sm-4">
+        <div class="well well-transparent text-center">
+            View, track or cancel an order
+            <div class="space-5"></div>
+            <a href="@Url.Action("orders")" class="btn btn-primary btn-block">Your Orders</a>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <h4>Open Orders</h4>
+        <table class="table table-condensed table-striped">
+            <tbody>
+                <tr>
+                    <td><a href="javascript:;">#364901</a></td>
+                    <td><a href="javascript:;" title="Status description here">Processing</a></td>
+                    <td class="text-right">$39.95</td>
+                    <td class="text-right">12/9/2013</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

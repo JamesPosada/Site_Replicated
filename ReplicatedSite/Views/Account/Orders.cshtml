@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "Your Orders";
+    Layout = "~/Views/Account/_Layout.cshtml";
+}
+
+
+
+<h3>Your Orders</h3>
+<nav class="navbar navbar-default" role="navigation">
+    <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+            <input type="search" class="form-control input-sm" placeholder="Order#..." />
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm">Search Orders</button>
+    </form>
+</nav>
+
+<p>
+    <a href="javascript:;" class="active">Orders by Date</a> |
+    <a href="javascript:;">Open Orders</a> |
+    <a href="javascript:;">Cancelled Orders</a>
+</p>
+
+<div class="orderlist">
+
+    @for (var x = 0; x < 3; x++)
+    {
+        <div class="order-widget">
+            <div class="row margin-0">
+                <div class="col-sm-3 details-container">
+                    <div class="padded-container">
+                        <small class="text-smaller uppercase">Order placed</small><br />
+                        <div class="text-larger">December 9, 2013</div>
+                        <p>
+                            <a href="javascript:;">View Invoice</a> | <a href="javascript:;">Print</a>
+                        </p>
+                        <p>Order <a href="javascript:;">#364901</a></p>
+                        <p>Total <span class="text-danger">$37.95</span></p>
+                    </div>
+                </div>
+                <div class="col-sm-9 items-container">
+                    <div class="padded-container">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <small class="text-smaller uppercase">Delivered on Tuesday, December 9, 2013</small><br />
+                                <div class="text-larger text-warning">Shipped</div>
+                            </div>
+                            <div class="col-sm-4">
+                                <a href="javascript:;" class="btn btn-primary btn-block">Track Package</a>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="padded-container">
+                        <div class="row">
+                            <div class="col-sm-8">
+
+                                <div class="item">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <a href="javascript:;"><img src="http://placehold.it/100x120" class="img-responsive" /></a>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <a href="javascript:;" class="block">Product Title</a>
+                                            <small class="text-smaller text-muted">SKU: <a href="javascript:;">#ITEMCODE</a></small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-sm-4">
+                                <a href="javascript:;" class="btn btn-default btn-block">Return/Replace Items</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
