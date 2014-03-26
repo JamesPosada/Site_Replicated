@@ -3,56 +3,76 @@
   <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Secure Exigo SOAP API for submitting transactions and retieving data.</wsdl:documentation>
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://api.exigo.com/">
-      <s:element name="GetCustomersRequest" type="tns:GetCustomersRequest" />
-      <s:complexType name="GetCustomersRequest">
+      <s:element name="SetItemPriceRequest" type="tns:SetItemPriceRequest" />
+      <s:complexType name="SetItemPriceRequest">
         <s:complexContent mixed="false">
           <s:extension base="tns:ApiRequest">
             <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="CustomerID" nillable="true" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="LoginName" nillable="true" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="FirstName" nillable="true" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="LastName" nillable="true" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="Company" nillable="true" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="Email" nillable="true" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="Phone" nillable="true" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="Phone2" nillable="true" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="MobilePhone" nillable="true" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="Fax" nillable="true" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="MainAddress1" nillable="true" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="MainCity" nillable="true" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="MainState" nillable="true" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="MainZip" nillable="true" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="MainCountry" nillable="true" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="TaxID" nillable="true" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="CustomerTypes" type="tns:ArrayOfInt" />
-              <s:element minOccurs="0" maxOccurs="1" name="CustomerStatuses" type="tns:ArrayOfInt" />
-              <s:element minOccurs="1" maxOccurs="1" name="EnrollerID" nillable="true" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="SponsorID" nillable="true" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="Field1" nillable="true" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="Field2" nillable="true" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="Field3" nillable="true" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="Field4" nillable="true" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="Field5" nillable="true" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="Field6" nillable="true" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="Field7" nillable="true" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="Field8" nillable="true" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="Field9" nillable="true" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="Field10" nillable="true" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="Field11" nillable="true" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="Field12" nillable="true" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="Field13" nillable="true" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="Field14" nillable="true" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="Field15" nillable="true" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="CreatedDateStart" nillable="true" type="s:dateTime" />
-              <s:element minOccurs="1" maxOccurs="1" name="CreatedDateEnd" nillable="true" type="s:dateTime" />
-              <s:element minOccurs="1" maxOccurs="1" name="GreaterThanCustomerID" nillable="true" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="GreaterThanModifiedDate" nillable="true" type="s:dateTime" />
-              <s:element minOccurs="1" maxOccurs="1" name="BatchSize" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="ItemCode" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="PriceType" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="Price" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="BusinessVolume" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="CommissionableVolume" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="TaxablePrice" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="ShippingPrice" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="Other1Price" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="Other2Price" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="Other3Price" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="Other4Price" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="Other5Price" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="Other6Price" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="Other7Price" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="Other8Price" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="Other9Price" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="Other10Price" nillable="true" type="s:decimal" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
       </s:complexType>
       <s:complexType name="ApiRequest" abstract="true" />
+      <s:complexType name="UpdateCustomerLeadRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ApiRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="CustomerLeadID" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="MiddleName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Phone2" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="MobilePhone" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Fax" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Address1" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="BirthDate" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CreateBillRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ApiRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="DueDate" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+              <s:element minOccurs="0" maxOccurs="1" name="Reference" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="BillStatusTypeID" nillable="true" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
       <s:complexType name="CreatePayoutRequest">
         <s:complexContent mixed="false">
           <s:extension base="tns:ApiRequest">
@@ -72,6 +92,32 @@
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
         </s:sequence>
+      </s:complexType>
+      <s:complexType name="CreateCustomerInquiryRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ApiRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Detail" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="AssignToUser" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CustomerInquiryStatusID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="CustomerInquiryCategoryID" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CreateCustomerFileRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ApiRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="FileData" type="s:base64Binary" />
+              <s:element minOccurs="1" maxOccurs="1" name="OverwriteExistingFile" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
       </s:complexType>
       <s:complexType name="SetItemCountryRegionRequest">
         <s:complexContent mixed="false">
@@ -103,28 +149,45 @@
           </s:extension>
         </s:complexContent>
       </s:complexType>
-      <s:complexType name="SetItemPriceRequest">
+      <s:complexType name="BaseAuthorizeOnlyCreditCardTokenRequest" abstract="true">
         <s:complexContent mixed="false">
-          <s:extension base="tns:ApiRequest">
+          <s:extension base="tns:ApiRequest" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AuthorizeOnlyCreditCardTokenOnFileRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseAuthorizeOnlyCreditCardTokenRequest">
             <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="ItemCode" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CreditCardAccountType" type="tns:AccountCreditCardType" />
+              <s:element minOccurs="1" maxOccurs="1" name="WarehouseID" type="s:int" />
               <s:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="PriceType" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="Price" nillable="true" type="s:decimal" />
-              <s:element minOccurs="1" maxOccurs="1" name="BusinessVolume" nillable="true" type="s:decimal" />
-              <s:element minOccurs="1" maxOccurs="1" name="CommissionableVolume" nillable="true" type="s:decimal" />
-              <s:element minOccurs="1" maxOccurs="1" name="TaxablePrice" nillable="true" type="s:decimal" />
-              <s:element minOccurs="1" maxOccurs="1" name="ShippingPrice" nillable="true" type="s:decimal" />
-              <s:element minOccurs="1" maxOccurs="1" name="Other1Price" nillable="true" type="s:decimal" />
-              <s:element minOccurs="1" maxOccurs="1" name="Other2Price" nillable="true" type="s:decimal" />
-              <s:element minOccurs="1" maxOccurs="1" name="Other3Price" nillable="true" type="s:decimal" />
-              <s:element minOccurs="1" maxOccurs="1" name="Other4Price" nillable="true" type="s:decimal" />
-              <s:element minOccurs="1" maxOccurs="1" name="Other5Price" nillable="true" type="s:decimal" />
-              <s:element minOccurs="1" maxOccurs="1" name="Other6Price" nillable="true" type="s:decimal" />
-              <s:element minOccurs="1" maxOccurs="1" name="Other7Price" nillable="true" type="s:decimal" />
-              <s:element minOccurs="1" maxOccurs="1" name="Other8Price" nillable="true" type="s:decimal" />
-              <s:element minOccurs="1" maxOccurs="1" name="Other9Price" nillable="true" type="s:decimal" />
-              <s:element minOccurs="1" maxOccurs="1" name="Other10Price" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="AccountCreditCardType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Primary" />
+          <s:enumeration value="Secondary" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="AuthorizeOnlyCreditCardTokenRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseAuthorizeOnlyCreditCardTokenRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="CreditCardToken" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+              <s:element minOccurs="0" maxOccurs="1" name="BillingName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BillingAddress" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BillingCity" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BillingState" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BillingZip" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BillingCountry" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="WarehouseID" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -202,33 +265,6 @@
           <s:extension base="tns:ApiRequest">
             <s:sequence>
               <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="MiddleName" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Phone2" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="MobilePhone" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Fax" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Address1" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="BirthDate" nillable="true" type="s:dateTime" />
-              <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="UpdateCustomerLeadRequest">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:ApiRequest">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="CustomerLeadID" type="s:int" />
               <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="MiddleName" type="s:string" />
@@ -407,6 +443,7 @@
               <s:element minOccurs="1" maxOccurs="1" name="WebCarrierID4" nillable="true" type="tns:OrderShipCarrier" />
               <s:element minOccurs="1" maxOccurs="1" name="WebCarrierID5" nillable="true" type="tns:OrderShipCarrier" />
               <s:element minOccurs="1" maxOccurs="1" name="LockedDate" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="OrderDate" nillable="true" type="s:dateTime" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -498,6 +535,11 @@
               <s:element minOccurs="1" maxOccurs="1" name="LanguageID" nillable="true" type="s:int" />
               <s:element minOccurs="1" maxOccurs="1" name="Gender" nillable="true" type="tns:Gender" />
               <s:element minOccurs="1" maxOccurs="1" name="VatRegistration" nillable="true" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Date1" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="Date2" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="Date3" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="Date4" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="Date5" nillable="true" type="s:dateTime" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -511,6 +553,7 @@
           <s:enumeration value="OnHold" />
           <s:enumeration value="BankWire" />
           <s:enumeration value="DebitCardHold" />
+          <s:enumeration value="Other100" />
         </s:restriction>
       </s:simpleType>
       <s:simpleType name="TaxIDType">
@@ -526,6 +569,7 @@
           <s:enumeration value="OtherType9" />
           <s:enumeration value="OtherType10" />
           <s:enumeration value="OtherType11" />
+          <s:enumeration value="OtherType12" />
         </s:restriction>
       </s:simpleType>
       <s:simpleType name="Gender">
@@ -533,6 +577,215 @@
           <s:enumeration value="Unknown" />
           <s:enumeration value="Male" />
           <s:enumeration value="Female" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="BaseCalculateOrderRequest" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ApiRequest" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CalculateOrderRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseCalculateOrderRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="WarehouseID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="ShipMethodID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="PriceType" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="County" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="OrderType" type="tns:OrderType" />
+              <s:element minOccurs="0" maxOccurs="1" name="Details" type="tns:ArrayOfOrderDetailRequest" />
+              <s:element minOccurs="1" maxOccurs="1" name="ReturnShipMethods" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="OrderType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Default" />
+          <s:enumeration value="CustomerService" />
+          <s:enumeration value="ShoppingCart" />
+          <s:enumeration value="WebWizard" />
+          <s:enumeration value="AutoOrder" />
+          <s:enumeration value="Import" />
+          <s:enumeration value="BackOrder" />
+          <s:enumeration value="ReplacementOrder" />
+          <s:enumeration value="ReturnOrder" />
+          <s:enumeration value="WebAutoOrder" />
+          <s:enumeration value="TicketSystem" />
+          <s:enumeration value="APIOrder" />
+          <s:enumeration value="BackOrderParent" />
+          <s:enumeration value="ChildOrder" />
+          <s:enumeration value="Other1" />
+          <s:enumeration value="Other2" />
+          <s:enumeration value="Other3" />
+          <s:enumeration value="Other4" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfOrderDetailRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OrderDetailRequest" nillable="true" type="tns:OrderDetailRequest" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OrderDetailRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ItemCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Quantity" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="ParentItemCode" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PriceEachOverride" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="TaxableEachOverride" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="ShippingPriceEachOverride" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="BusinessVolumeEachOverride" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="CommissionableVolumeEachOverride" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Other1EachOverride" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Other2EachOverride" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Other3EachOverride" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Other4EachOverride" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Other5EachOverride" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Other6EachOverride" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Other7EachOverride" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Other8EachOverride" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Other9EachOverride" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Other10EachOverride" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="DescriptionOverride" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CreateAutoOrderRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseCalculateOrderRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="Frequency" type="tns:FrequencyType" />
+              <s:element minOccurs="1" maxOccurs="1" name="StartDate" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="StopDate" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="WarehouseID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="ShipMethodID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="PriceType" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="PaymentType" type="tns:AutoOrderPaymentType" />
+              <s:element minOccurs="1" maxOccurs="1" name="ProcessType" nillable="true" type="tns:AutoOrderProcessType" />
+              <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Address1" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="County" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Other11" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Other12" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Other13" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Other14" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Other15" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Other16" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Other17" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Other18" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Other19" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Other20" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="OverwriteExistingAutoOrder" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="ExistingAutoOrderID" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Details" type="tns:ArrayOfOrderDetailRequest" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="FrequencyType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Weekly" />
+          <s:enumeration value="BiWeekly" />
+          <s:enumeration value="Monthly" />
+          <s:enumeration value="BiMonthly" />
+          <s:enumeration value="Quarterly" />
+          <s:enumeration value="SemiYearly" />
+          <s:enumeration value="Yearly" />
+          <s:enumeration value="EveryFourWeeks" />
+          <s:enumeration value="EverySixWeeks" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="AutoOrderPaymentType">
+        <s:restriction base="s:string">
+          <s:enumeration value="PrimaryCreditCard" />
+          <s:enumeration value="SecondaryCreditCard" />
+          <s:enumeration value="CheckingAccount" />
+          <s:enumeration value="WillSendPayment" />
+          <s:enumeration value="BankDraft" />
+          <s:enumeration value="PrimaryWalletAccount" />
+          <s:enumeration value="SecondaryWalletAccount" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="AutoOrderProcessType">
+        <s:restriction base="s:string">
+          <s:enumeration value="AlwaysProcess" />
+          <s:enumeration value="Conditional" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="CreateOrderRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseCalculateOrderRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="OrderStatus" type="tns:OrderStatusType" />
+              <s:element minOccurs="1" maxOccurs="1" name="OrderDate" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="WarehouseID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="ShipMethodID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="PriceType" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Address1" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="County" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Other11" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Other12" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Other13" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Other14" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Other15" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Other16" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Other17" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Other18" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Other19" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Other20" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="OrderType" type="tns:OrderType" />
+              <s:element minOccurs="1" maxOccurs="1" name="UseManualOrderID" nillable="true" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="ManualOrderID" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="TransferVolumeToID" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Details" type="tns:ArrayOfOrderDetailRequest" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="OrderStatusType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Incomplete" />
+          <s:enumeration value="Pending" />
+          <s:enumeration value="CCDeclined" />
+          <s:enumeration value="ACHDeclined" />
+          <s:enumeration value="Canceled" />
+          <s:enumeration value="CCPending" />
+          <s:enumeration value="ACHPending" />
+          <s:enumeration value="Accepted" />
+          <s:enumeration value="Printed" />
+          <s:enumeration value="Shipped" />
+          <s:enumeration value="PendingInventory" />
         </s:restriction>
       </s:simpleType>
       <s:complexType name="SetAccountDirectDepositRequest">
@@ -604,6 +857,7 @@
               <s:element minOccurs="0" maxOccurs="1" name="BillingName" type="s:string" />
               <s:element minOccurs="1" maxOccurs="1" name="UseMainAddress" type="s:boolean" />
               <s:element minOccurs="0" maxOccurs="1" name="BillingAddress" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BillingAddress2" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="BillingCity" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="BillingState" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="BillingZip" type="s:string" />
@@ -613,12 +867,6 @@
           </s:extension>
         </s:complexContent>
       </s:complexType>
-      <s:simpleType name="AccountCreditCardType">
-        <s:restriction base="s:string">
-          <s:enumeration value="Primary" />
-          <s:enumeration value="Secondary" />
-        </s:restriction>
-      </s:simpleType>
       <s:complexType name="SetAccountCreditCardRequest">
         <s:complexContent mixed="false">
           <s:extension base="tns:ApiRequest">
@@ -712,39 +960,6 @@
           </s:extension>
         </s:complexContent>
       </s:complexType>
-      <s:simpleType name="OrderStatusType">
-        <s:restriction base="s:string">
-          <s:enumeration value="Incomplete" />
-          <s:enumeration value="Pending" />
-          <s:enumeration value="CCDeclined" />
-          <s:enumeration value="ACHDeclined" />
-          <s:enumeration value="Canceled" />
-          <s:enumeration value="CCPending" />
-          <s:enumeration value="ACHPending" />
-          <s:enumeration value="Accepted" />
-          <s:enumeration value="Printed" />
-          <s:enumeration value="Shipped" />
-          <s:enumeration value="PendingInventory" />
-        </s:restriction>
-      </s:simpleType>
-      <s:simpleType name="OrderType">
-        <s:restriction base="s:string">
-          <s:enumeration value="Default" />
-          <s:enumeration value="CustomerService" />
-          <s:enumeration value="ShoppingCart" />
-          <s:enumeration value="WebWizard" />
-          <s:enumeration value="AutoOrder" />
-          <s:enumeration value="Import" />
-          <s:enumeration value="BackOrder" />
-          <s:enumeration value="ReplacementOrder" />
-          <s:enumeration value="ReturnOrder" />
-          <s:enumeration value="WebAutoOrder" />
-          <s:enumeration value="TicketSystem" />
-          <s:enumeration value="APIOrder" />
-          <s:enumeration value="BackOrderParent" />
-          <s:enumeration value="ChildOrder" />
-        </s:restriction>
-      </s:simpleType>
       <s:complexType name="ArrayOfOrderImportDetail">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="unbounded" name="OrderImportDetail" nillable="true" type="tns:OrderImportDetail" />
@@ -853,6 +1068,11 @@
               <s:element minOccurs="1" maxOccurs="1" name="LanguageID" type="s:int" />
               <s:element minOccurs="1" maxOccurs="1" name="Gender" nillable="true" type="tns:Gender" />
               <s:element minOccurs="0" maxOccurs="1" name="VatRegistration" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Date1" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="Date2" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="Date3" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="Date4" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="Date5" nillable="true" type="s:dateTime" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -937,46 +1157,25 @@
           <s:enumeration value="Wallet" />
         </s:restriction>
       </s:simpleType>
-      <s:complexType name="BaseAuthorizeOnlyCreditCardTokenRequest" abstract="true">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:ApiRequest" />
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="AuthorizeOnlyCreditCardTokenRequest">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:BaseAuthorizeOnlyCreditCardTokenRequest">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="CreditCardToken" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
-              <s:element minOccurs="0" maxOccurs="1" name="BillingName" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="BillingAddress" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="BillingCity" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="BillingState" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="BillingZip" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="BillingCountry" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="WarehouseID" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="AuthorizeOnlyCreditCardTokenOnFileRequest">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:BaseAuthorizeOnlyCreditCardTokenRequest">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="CreditCardAccountType" type="tns:AccountCreditCardType" />
-              <s:element minOccurs="1" maxOccurs="1" name="WarehouseID" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
       <s:complexType name="BaseCreatePaymentRequest" abstract="true">
         <s:complexContent mixed="false">
           <s:extension base="tns:ApiRequest" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CreatePaymentWalletRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseCreatePaymentRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="OrderID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="PaymentDate" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="WalletType" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="WalletAccount" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="AuthorizationCode" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Memo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BillingName" type="s:string" />
+            </s:sequence>
+          </s:extension>
         </s:complexContent>
       </s:complexType>
       <s:complexType name="CreatePaymentRequest">
@@ -990,6 +1189,17 @@
               <s:element minOccurs="0" maxOccurs="1" name="AuthorizationCode" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="Memo" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="BillingName" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ChargePriorAuthorizationRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseCreatePaymentRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="MerchantTransactionKey" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="OrderID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="MaxAmount" nillable="true" type="s:decimal" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -1039,26 +1249,6 @@
           </s:extension>
         </s:complexContent>
       </s:complexType>
-      <s:complexType name="ChargeCreditCardTokenRequest">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:BaseChargeCreditCardRequest">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="CreditCardToken" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="BillingName" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="BillingAddress" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="BillingCity" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="BillingState" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="BillingZip" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="BillingCountry" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="CvcCode" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="IssueNumber" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="CreditCardType" nillable="true" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="OrderID" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="MaxAmount" nillable="true" type="s:decimal" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
       <s:complexType name="ChargeCreditCardOnFileRequest">
         <s:complexContent mixed="false">
           <s:extension base="tns:BaseChargeCreditCardRequest">
@@ -1092,253 +1282,31 @@
           </s:extension>
         </s:complexContent>
       </s:complexType>
-      <s:complexType name="CreatePaymentWalletRequest">
+      <s:complexType name="ChargeCreditCardTokenRequest">
         <s:complexContent mixed="false">
-          <s:extension base="tns:BaseCreatePaymentRequest">
+          <s:extension base="tns:BaseChargeCreditCardRequest">
             <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="OrderID" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="PaymentDate" type="s:dateTime" />
-              <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
-              <s:element minOccurs="1" maxOccurs="1" name="WalletType" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="WalletAccount" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="AuthorizationCode" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Memo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CreditCardToken" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="BillingName" type="s:string" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="ChargePriorAuthorizationRequest">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:BaseCreatePaymentRequest">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="MerchantTransactionKey" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BillingAddress" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BillingAddress2" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BillingCity" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BillingState" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BillingZip" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BillingCountry" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CvcCode" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="IssueNumber" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CreditCardType" nillable="true" type="s:int" />
               <s:element minOccurs="1" maxOccurs="1" name="OrderID" type="s:int" />
               <s:element minOccurs="1" maxOccurs="1" name="MaxAmount" nillable="true" type="s:decimal" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
       </s:complexType>
-      <s:complexType name="BaseCalculateOrderRequest" abstract="true">
+      <s:element name="SetItemPriceResult" type="tns:SetItemPriceResponse" />
+      <s:complexType name="SetItemPriceResponse">
         <s:complexContent mixed="false">
-          <s:extension base="tns:ApiRequest" />
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="CalculateOrderRequest">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:BaseCalculateOrderRequest">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="WarehouseID" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="ShipMethodID" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="PriceType" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="County" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="Details" type="tns:ArrayOfOrderDetailRequest" />
-              <s:element minOccurs="1" maxOccurs="1" name="ReturnShipMethods" type="s:boolean" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="ArrayOfOrderDetailRequest">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="OrderDetailRequest" nillable="true" type="tns:OrderDetailRequest" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="OrderDetailRequest">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="ItemCode" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="Quantity" type="s:decimal" />
-          <s:element minOccurs="1" maxOccurs="1" name="ParentItemCode" nillable="true" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="PriceEachOverride" nillable="true" type="s:decimal" />
-          <s:element minOccurs="1" maxOccurs="1" name="TaxableEachOverride" nillable="true" type="s:decimal" />
-          <s:element minOccurs="1" maxOccurs="1" name="ShippingPriceEachOverride" nillable="true" type="s:decimal" />
-          <s:element minOccurs="1" maxOccurs="1" name="BusinessVolumeEachOverride" nillable="true" type="s:decimal" />
-          <s:element minOccurs="1" maxOccurs="1" name="CommissionableVolumeEachOverride" nillable="true" type="s:decimal" />
-          <s:element minOccurs="1" maxOccurs="1" name="Other1EachOverride" nillable="true" type="s:decimal" />
-          <s:element minOccurs="1" maxOccurs="1" name="Other2EachOverride" nillable="true" type="s:decimal" />
-          <s:element minOccurs="1" maxOccurs="1" name="Other3EachOverride" nillable="true" type="s:decimal" />
-          <s:element minOccurs="1" maxOccurs="1" name="Other4EachOverride" nillable="true" type="s:decimal" />
-          <s:element minOccurs="1" maxOccurs="1" name="Other5EachOverride" nillable="true" type="s:decimal" />
-          <s:element minOccurs="1" maxOccurs="1" name="Other6EachOverride" nillable="true" type="s:decimal" />
-          <s:element minOccurs="1" maxOccurs="1" name="Other7EachOverride" nillable="true" type="s:decimal" />
-          <s:element minOccurs="1" maxOccurs="1" name="Other8EachOverride" nillable="true" type="s:decimal" />
-          <s:element minOccurs="1" maxOccurs="1" name="Other9EachOverride" nillable="true" type="s:decimal" />
-          <s:element minOccurs="1" maxOccurs="1" name="Other10EachOverride" nillable="true" type="s:decimal" />
-          <s:element minOccurs="1" maxOccurs="1" name="DescriptionOverride" nillable="true" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="CreateAutoOrderRequest">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:BaseCalculateOrderRequest">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="Frequency" type="tns:FrequencyType" />
-              <s:element minOccurs="1" maxOccurs="1" name="StartDate" type="s:dateTime" />
-              <s:element minOccurs="1" maxOccurs="1" name="StopDate" nillable="true" type="s:dateTime" />
-              <s:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="WarehouseID" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="ShipMethodID" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="PriceType" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="PaymentType" type="tns:AutoOrderPaymentType" />
-              <s:element minOccurs="1" maxOccurs="1" name="ProcessType" nillable="true" type="tns:AutoOrderProcessType" />
-              <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Address1" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="County" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Other11" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Other12" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Other13" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Other14" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Other15" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Other16" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Other17" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Other18" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Other19" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Other20" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="OverwriteExistingAutoOrder" type="s:boolean" />
-              <s:element minOccurs="1" maxOccurs="1" name="ExistingAutoOrderID" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="Details" type="tns:ArrayOfOrderDetailRequest" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:simpleType name="FrequencyType">
-        <s:restriction base="s:string">
-          <s:enumeration value="Weekly" />
-          <s:enumeration value="BiWeekly" />
-          <s:enumeration value="Monthly" />
-          <s:enumeration value="BiMonthly" />
-          <s:enumeration value="Quarterly" />
-          <s:enumeration value="SemiYearly" />
-          <s:enumeration value="Yearly" />
-          <s:enumeration value="EveryFourWeeks" />
-        </s:restriction>
-      </s:simpleType>
-      <s:simpleType name="AutoOrderPaymentType">
-        <s:restriction base="s:string">
-          <s:enumeration value="PrimaryCreditCard" />
-          <s:enumeration value="SecondaryCreditCard" />
-          <s:enumeration value="CheckingAccount" />
-          <s:enumeration value="WillSendPayment" />
-          <s:enumeration value="BankDraft" />
-          <s:enumeration value="PrimaryWalletAccount" />
-          <s:enumeration value="SecondaryWalletAccount" />
-        </s:restriction>
-      </s:simpleType>
-      <s:simpleType name="AutoOrderProcessType">
-        <s:restriction base="s:string">
-          <s:enumeration value="AlwaysProcess" />
-          <s:enumeration value="Conditional" />
-        </s:restriction>
-      </s:simpleType>
-      <s:complexType name="CreateOrderRequest">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:BaseCalculateOrderRequest">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="OrderStatus" type="tns:OrderStatusType" />
-              <s:element minOccurs="1" maxOccurs="1" name="OrderDate" type="s:dateTime" />
-              <s:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="WarehouseID" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="ShipMethodID" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="PriceType" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Address1" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="County" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Other11" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Other12" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Other13" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Other14" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Other15" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Other16" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Other17" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Other18" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Other19" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Other20" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="OrderType" type="tns:OrderType" />
-              <s:element minOccurs="1" maxOccurs="1" name="UseManualOrderID" nillable="true" type="s:boolean" />
-              <s:element minOccurs="1" maxOccurs="1" name="ManualOrderID" nillable="true" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="TransferVolumeToID" nillable="true" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="Details" type="tns:ArrayOfOrderDetailRequest" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="CreateCustomerInquiryRequest">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:ApiRequest">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="Detail" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="AssignToUser" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="CustomerInquiryStatusID" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="CustomerInquiryCategoryID" type="s:int" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="CreateBillRequest">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:ApiRequest">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="DueDate" type="s:dateTime" />
-              <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
-              <s:element minOccurs="0" maxOccurs="1" name="Reference" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="BillStatusTypeID" nillable="true" type="s:int" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="CreateCustomerFileRequest">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:ApiRequest">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="FileData" type="s:base64Binary" />
-              <s:element minOccurs="1" maxOccurs="1" name="OverwriteExistingFile" type="s:boolean" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:element name="GetCustomersResult" type="tns:GetCustomersResponse" />
-      <s:complexType name="GetCustomersResponse">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:ApiResponse">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="Customers" type="tns:ArrayOfCustomerResponse" />
-              <s:element minOccurs="1" maxOccurs="1" name="RecordCount" type="s:int" />
-            </s:sequence>
-          </s:extension>
+          <s:extension base="tns:ApiResponse" />
         </s:complexContent>
       </s:complexType>
       <s:complexType name="ApiResponse" abstract="true">
@@ -1363,6 +1331,20 @@
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
         </s:sequence>
+      </s:complexType>
+      <s:complexType name="SetItemCountryRegionResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ApiResponse" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CreateBillResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ApiResponse">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="BillID" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
       </s:complexType>
       <s:complexType name="CreatePayoutResponse">
         <s:complexContent mixed="false">
@@ -1393,9 +1375,36 @@
           </s:extension>
         </s:complexContent>
       </s:complexType>
-      <s:complexType name="SetItemCountryRegionResponse">
+      <s:complexType name="BaseCreateExpectedPaymentResponse" abstract="true">
         <s:complexContent mixed="false">
           <s:extension base="tns:ApiResponse" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CreateExpectedBankWireResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseCreateExpectedPaymentResponse">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="ExpectedPaymentID" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CreateExpectedCODResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseCreateExpectedPaymentResponse">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="ExpectedPaymentID" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CreateExpectedPaymentResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseCreateExpectedPaymentResponse">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="ExpectedPaymentID" type="s:int" />
+            </s:sequence>
+          </s:extension>
         </s:complexContent>
       </s:complexType>
       <s:complexType name="GetItemCountryRegionResponse">
@@ -1463,9 +1472,13 @@
           <s:element minOccurs="0" maxOccurs="1" name="Field3" type="s:string" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="SetCustomerSiteResponse">
+      <s:complexType name="DeleteCustomerWallItemResponse">
         <s:complexContent mixed="false">
-          <s:extension base="tns:ApiResponse" />
+          <s:extension base="tns:ApiResponse">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CountOfDeletedRows" type="s:int" />
+            </s:sequence>
+          </s:extension>
         </s:complexContent>
       </s:complexType>
       <s:complexType name="CreateCustomerWallItemResponse">
@@ -1538,48 +1551,50 @@
           <s:extension base="tns:ApiResponse" />
         </s:complexContent>
       </s:complexType>
-      <s:complexType name="GetCustomerLeadSocialNetworksResponse">
+      <s:complexType name="AuthorizeOnlyCreditCardResponse">
         <s:complexContent mixed="false">
           <s:extension base="tns:ApiResponse">
             <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="CustomerLeadSocialNetwork" type="tns:ArrayOfCustomerLeadSocialNetworksResponse" />
+              <s:element minOccurs="0" maxOccurs="1" name="AuthorizationCode" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="MerchantTransactionKey" type="s:string" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
-      </s:complexType>
-      <s:complexType name="ArrayOfCustomerLeadSocialNetworksResponse">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="CustomerLeadSocialNetworksResponse" nillable="true" type="tns:CustomerLeadSocialNetworksResponse" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="CustomerLeadSocialNetworksResponse">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="SocialNetworkID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="SocialNetworkDescription" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Url" type="s:string" />
-        </s:sequence>
       </s:complexType>
       <s:complexType name="SetCustomerSocialNetworksResponse">
         <s:complexContent mixed="false">
           <s:extension base="tns:ApiResponse" />
         </s:complexContent>
       </s:complexType>
-      <s:complexType name="CreateBillResponse">
+      <s:complexType name="GetCustomerSocialNetworksResponse">
         <s:complexContent mixed="false">
           <s:extension base="tns:ApiResponse">
             <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="BillID" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="CustomerSocialNetwork" type="tns:ArrayOfCustomerSocialNetworksResponse" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
       </s:complexType>
-      <s:complexType name="DeleteCustomerWallItemResponse">
+      <s:complexType name="ArrayOfCustomerSocialNetworksResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CustomerSocialNetworksResponse" nillable="true" type="tns:CustomerSocialNetworksResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CustomerSocialNetworksResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SocialNetworkID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SocialNetworkDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Url" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SetCustomerSiteResponse">
         <s:complexContent mixed="false">
-          <s:extension base="tns:ApiResponse">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="CountOfDeletedRows" type="s:int" />
-            </s:sequence>
-          </s:extension>
+          <s:extension base="tns:ApiResponse" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="UpdateCustomerResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ApiResponse" />
         </s:complexContent>
       </s:complexType>
       <s:complexType name="UpdateOrderResponse">
@@ -1822,72 +1837,175 @@
           </s:extension>
         </s:complexContent>
       </s:complexType>
-      <s:complexType name="BaseCreateExpectedPaymentResponse" abstract="true">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:ApiResponse" />
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="CreateExpectedBankWireResponse">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:BaseCreateExpectedPaymentResponse">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="ExpectedPaymentID" type="s:int" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="CreateExpectedCODResponse">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:BaseCreateExpectedPaymentResponse">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="ExpectedPaymentID" type="s:int" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="CreateExpectedPaymentResponse">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:BaseCreateExpectedPaymentResponse">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="ExpectedPaymentID" type="s:int" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="AuthorizeOnlyCreditCardResponse">
+      <s:complexType name="GetCustomerLeadSocialNetworksResponse">
         <s:complexContent mixed="false">
           <s:extension base="tns:ApiResponse">
             <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="AuthorizationCode" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="MerchantTransactionKey" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CustomerLeadSocialNetwork" type="tns:ArrayOfCustomerLeadSocialNetworksResponse" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
       </s:complexType>
-      <s:complexType name="GetCustomerSocialNetworksResponse">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:ApiResponse">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="CustomerSocialNetwork" type="tns:ArrayOfCustomerSocialNetworksResponse" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="ArrayOfCustomerSocialNetworksResponse">
+      <s:complexType name="ArrayOfCustomerLeadSocialNetworksResponse">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="CustomerSocialNetworksResponse" nillable="true" type="tns:CustomerSocialNetworksResponse" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CustomerLeadSocialNetworksResponse" nillable="true" type="tns:CustomerLeadSocialNetworksResponse" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="CustomerSocialNetworksResponse">
+      <s:complexType name="CustomerLeadSocialNetworksResponse">
         <s:sequence>
           <s:element minOccurs="1" maxOccurs="1" name="SocialNetworkID" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="SocialNetworkDescription" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Url" type="s:string" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="UpdateCustomerResponse">
+      <s:element name="ApiAuthentication" type="tns:ApiAuthentication" />
+      <s:complexType name="ApiAuthentication">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="SetItemWarehouseRequest" type="tns:SetItemWarehouseRequest" />
+      <s:element name="SetItemWarehouseResult" type="tns:SetItemWarehouseResponse" />
+      <s:complexType name="SetItemWarehouseResponse">
         <s:complexContent mixed="false">
           <s:extension base="tns:ApiResponse" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="SetItemCountryRegionRequest" type="tns:SetItemCountryRegionRequest" />
+      <s:element name="SetItemCountryRegionResult" type="tns:SetItemCountryRegionResponse" />
+      <s:element name="GetItemCountryRegionRequest" type="tns:GetItemCountryRegionRequest" />
+      <s:complexType name="GetItemCountryRegionRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ApiRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ItemCode" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetItemCountryRegionResult" type="tns:GetItemCountryRegionResponse" />
+      <s:element name="CreateCustomerFileRequest" type="tns:CreateCustomerFileRequest" />
+      <s:element name="CreateCustomerFileResult" type="tns:CreateCustomerFileResponse" />
+      <s:element name="CreateCustomerInquiryRequest" type="tns:CreateCustomerInquiryRequest" />
+      <s:element name="CreateCustomerInquiryResult" type="tns:CreateCustomerInquiryResponse" />
+      <s:element name="GetCustomerBalancesRequest" type="tns:GetCustomerBalancesRequest" />
+      <s:complexType name="GetCustomerBalancesRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ApiRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetCustomerBalancesResult" type="tns:GetCustomerBalancesResponse" />
+      <s:complexType name="GetCustomerBalancesResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ApiResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="CustomerBalances" type="tns:ArrayOfCustomerBalanceResponse" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfCustomerBalanceResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CustomerBalanceResponse" nillable="true" type="tns:CustomerBalanceResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CustomerBalanceResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CurrencyDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Balance" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateCustomerBalanceAdjustmentRequest" type="tns:CreateCustomerBalanceAdjustmentRequest" />
+      <s:complexType name="CreateCustomerBalanceAdjustmentRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ApiRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="CustomerTransactionTypeID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="TransactionDate" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+              <s:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="CreateCustomerBalanceAdjustmentResult" type="tns:CreateCustomerBalanceAdjustmentResponse" />
+      <s:complexType name="CreateCustomerBalanceAdjustmentResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ApiResponse">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="TransactionID" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetCustomersRequest" type="tns:GetCustomersRequest" />
+      <s:complexType name="GetCustomersRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ApiRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CustomerID" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="LoginName" nillable="true" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="FirstName" nillable="true" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="LastName" nillable="true" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Company" nillable="true" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Email" nillable="true" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Phone" nillable="true" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Phone2" nillable="true" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="MobilePhone" nillable="true" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Fax" nillable="true" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="MainAddress1" nillable="true" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="MainCity" nillable="true" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="MainState" nillable="true" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="MainZip" nillable="true" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="MainCountry" nillable="true" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="TaxID" nillable="true" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CustomerTypes" type="tns:ArrayOfInt" />
+              <s:element minOccurs="0" maxOccurs="1" name="CustomerStatuses" type="tns:ArrayOfInt" />
+              <s:element minOccurs="1" maxOccurs="1" name="EnrollerID" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="SponsorID" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="Field1" nillable="true" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Field2" nillable="true" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Field3" nillable="true" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Field4" nillable="true" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Field5" nillable="true" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Field6" nillable="true" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Field7" nillable="true" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Field8" nillable="true" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Field9" nillable="true" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Field10" nillable="true" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Field11" nillable="true" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Field12" nillable="true" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Field13" nillable="true" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Field14" nillable="true" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Field15" nillable="true" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CreatedDateStart" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="CreatedDateEnd" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="GreaterThanCustomerID" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="GreaterThanModifiedDate" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="BatchSize" nillable="true" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetCustomersResult" type="tns:GetCustomersResponse" />
+      <s:complexType name="GetCustomersResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ApiResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Customers" type="tns:ArrayOfCustomerResponse" />
+              <s:element minOccurs="1" maxOccurs="1" name="RecordCount" type="s:int" />
+            </s:sequence>
+          </s:extension>
         </s:complexContent>
       </s:complexType>
       <s:complexType name="ArrayOfCustomerResponse">
@@ -1969,15 +2087,6 @@
           <s:element minOccurs="1" maxOccurs="1" name="CreatedDate" type="s:dateTime" />
           <s:element minOccurs="1" maxOccurs="1" name="ModifiedDate" type="s:dateTime" />
         </s:sequence>
-      </s:complexType>
-      <s:element name="ApiAuthentication" type="tns:ApiAuthentication" />
-      <s:complexType name="ApiAuthentication">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
-        </s:sequence>
-        <s:anyAttribute />
       </s:complexType>
       <s:element name="GetVolumesRequest" type="tns:GetVolumesRequest" />
       <s:complexType name="GetVolumesRequest">
@@ -2114,6 +2223,106 @@
           <s:element minOccurs="1" maxOccurs="1" name="Volume100" type="s:decimal" />
           <s:element minOccurs="1" maxOccurs="1" name="RankID" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="PaidRankID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume101" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume102" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume103" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume104" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume105" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume106" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume107" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume108" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume109" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume110" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume111" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume112" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume113" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume114" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume115" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume116" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume117" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume118" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume119" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume120" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume121" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume122" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume123" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume124" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume125" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume126" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume127" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume128" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume129" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume130" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume131" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume132" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume133" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume134" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume135" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume136" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume137" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume138" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume139" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume140" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume141" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume142" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume143" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume144" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume145" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume146" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume147" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume148" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume149" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume150" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume151" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume152" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume153" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume154" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume155" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume156" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume157" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume158" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume159" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume160" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume161" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume162" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume163" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume164" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume165" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume166" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume167" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume168" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume169" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume170" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume171" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume172" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume173" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume174" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume175" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume176" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume177" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume178" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume179" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume180" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume181" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume182" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume183" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume184" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume185" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume186" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume187" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume188" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume189" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume190" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume191" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume192" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume193" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume194" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume195" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume196" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume197" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume198" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume199" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume200" type="s:decimal" />
         </s:sequence>
       </s:complexType>
       <s:element name="GetRealTimeCommissionsRequest" type="tns:GetRealTimeCommissionsRequest" />
@@ -2214,6 +2423,7 @@
               <s:element minOccurs="1" maxOccurs="1" name="PeriodType" type="s:int" />
               <s:element minOccurs="1" maxOccurs="1" name="PeriodID" nillable="true" type="s:int" />
               <s:element minOccurs="0" maxOccurs="1" name="CultureCode" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="RankGroupID" nillable="true" type="s:int" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -2267,6 +2477,85 @@
           <s:element minOccurs="1" maxOccurs="1" name="Weight" type="s:decimal" />
           <s:element minOccurs="1" maxOccurs="1" name="Score" type="s:decimal" />
         </s:sequence>
+      </s:complexType>
+      <s:element name="GetQualificationOverridesRequest" type="tns:GetQualificationOverridesRequest" />
+      <s:complexType name="GetQualificationOverridesRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ApiRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CustomerID" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="OverrideID" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="BatchSize" nillable="true" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetQualificationOverridesResult" type="tns:GetQualitificationOverridesResponse" />
+      <s:complexType name="GetQualitificationOverridesResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ApiResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="QualificationOverrides" type="tns:ArrayOfGetQualificationOverrideResponse" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfGetQualificationOverrideResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetQualificationOverrideResponse" nillable="true" type="tns:GetQualificationOverrideResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetQualificationOverrideResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="OverrideID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Qualifies" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PeriodType" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartPeriodID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EndPeriodID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifiedDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="ModifiedBy" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SetQualificationOverrideRequest" type="tns:SetQualificationOverrideRequest" />
+      <s:complexType name="SetQualificationOverrideRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ApiRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="OverrideID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="Qualifies" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="PeriodType" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="StartPeriodID" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="EndPeriodID" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="Amount" nillable="true" type="s:decimal" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="SetQualificationOverrideResult" type="tns:SetQualificationOverrideResponse" />
+      <s:complexType name="SetQualificationOverrideResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ApiResponse" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="DeleteQualificationOverrideRequest" type="tns:DeleteQualificationOverrideRequest" />
+      <s:complexType name="DeleteQualificationOverrideRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ApiRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="OverrideID" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="DeleteQualificationOverrideResult" type="tns:DeleteQualificationOverrideResponse" />
+      <s:complexType name="DeleteQualificationOverrideResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ApiResponse" />
+        </s:complexContent>
       </s:complexType>
       <s:element name="AdjustInventoryRequest" type="tns:AdjustInventoryRequest" />
       <s:complexType name="AdjustInventoryRequest">
@@ -2584,6 +2873,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="BillingState" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="BillingZip" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="BillingCountry" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BillingAddress2" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="BankAccountResponse">
@@ -2598,6 +2888,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="BillingState" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="BillingZip" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="BillingCountry" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BillingAddress2" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="WalletAccountResponse">
@@ -2773,6 +3064,47 @@
         </s:complexContent>
       </s:complexType>
       <s:element name="DebitBankAccountOnFileResult" type="tns:DebitBankAccountResponse" />
+      <s:element name="ChargeWalletAccountRequest" type="tns:ChargeWalletAccountRequest" />
+      <s:complexType name="ChargeWalletAccountRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseChargeWalletAccountRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="WalletAccountNumber" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="WalletTy" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="OrderID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="MaxAmount" nillable="true" type="s:decimal" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BaseChargeWalletAccountRequest" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseCreatePaymentRequest" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="ChargeWalletAccountResult" type="tns:ChargeWalletAccountResponse" />
+      <s:complexType name="ChargeWalletAccountResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CreatePaymentResponse">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+              <s:element minOccurs="0" maxOccurs="1" name="AuthorizationCode" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="ChargeWalletAccountOnFileRequest" type="tns:ChargeWalletAccountOnFileRequest" />
+      <s:complexType name="ChargeWalletAccountOnFileRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseCreatePaymentRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="OrderID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="MaxAmount" nillable="true" type="s:decimal" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="ChargeWalletAccountOnFileResult" type="tns:ChargeWalletAccountResponse" />
       <s:element name="SetAccountCreditCardRequest" type="tns:SetAccountCreditCardRequest" />
       <s:element name="SetAccountCreditCardResult" type="tns:SetAccountResponse" />
       <s:element name="SetAccountCreditCardTokenRequest" type="tns:SetAccountCreditCardTokenRequest" />
@@ -3047,6 +3379,16 @@
               <s:element minOccurs="1" maxOccurs="1" name="GreaterThanOrderID" nillable="true" type="s:int" />
               <s:element minOccurs="1" maxOccurs="1" name="GreaterThanModifiedDate" nillable="true" type="s:dateTime" />
               <s:element minOccurs="1" maxOccurs="1" name="BatchSize" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Other11" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Other12" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Other13" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Other14" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Other15" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Other16" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Other17" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Other18" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Other19" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Other20" type="s:string" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -3726,6 +4068,106 @@
           <s:element minOccurs="1" maxOccurs="1" name="Volume98" type="s:decimal" />
           <s:element minOccurs="1" maxOccurs="1" name="Volume99" type="s:decimal" />
           <s:element minOccurs="1" maxOccurs="1" name="Volume100" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume101" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume102" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume103" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume104" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume105" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume106" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume107" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume108" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume109" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume110" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume111" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume112" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume113" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume114" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume115" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume116" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume117" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume118" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume119" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume120" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume121" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume122" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume123" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume124" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume125" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume126" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume127" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume128" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume129" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume130" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume131" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume132" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume133" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume134" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume135" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume136" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume137" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume138" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume139" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume140" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume141" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume142" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume143" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume144" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume145" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume146" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume147" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume148" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume149" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume150" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume151" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume152" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume153" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume154" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume155" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume156" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume157" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume158" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume159" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume160" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume161" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume162" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume163" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume164" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume165" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume166" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume167" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume168" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume169" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume170" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume171" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume172" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume173" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume174" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume175" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume176" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume177" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume178" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume179" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume180" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume181" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume182" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume183" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume184" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume185" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume186" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume187" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume188" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume189" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume190" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume191" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume192" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume193" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume194" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume195" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume196" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume197" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume198" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume199" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume200" type="s:decimal" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="ArrayOfNodeResponse">
@@ -3891,7 +4333,7 @@
           <s:extension base="tns:ApiRequest" />
         </s:complexContent>
       </s:complexType>
-      <s:complexType name="IsUniLevelChildValidateRequest">
+      <s:complexType name="IsEnrollerChildValidateRequest">
         <s:complexContent mixed="false">
           <s:extension base="tns:ValidateRequest">
             <s:sequence>
@@ -3911,17 +4353,16 @@
           </s:extension>
         </s:complexContent>
       </s:complexType>
-      <s:complexType name="IsTaxIDAvailableValidateRequest">
+      <s:complexType name="IsLoginNameAvailableValidateRequest">
         <s:complexContent mixed="false">
           <s:extension base="tns:ValidateRequest">
             <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="TaxID" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="ExcludeCustomerID" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
       </s:complexType>
-      <s:complexType name="IsEnrollerChildValidateRequest">
+      <s:complexType name="IsUniLevelChildValidateRequest">
         <s:complexContent mixed="false">
           <s:extension base="tns:ValidateRequest">
             <s:sequence>
@@ -3931,11 +4372,12 @@
           </s:extension>
         </s:complexContent>
       </s:complexType>
-      <s:complexType name="IsLoginNameAvailableValidateRequest">
+      <s:complexType name="IsTaxIDAvailableValidateRequest">
         <s:complexContent mixed="false">
           <s:extension base="tns:ValidateRequest">
             <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TaxID" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="ExcludeCustomerID" type="s:int" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -4105,6 +4547,7 @@
               <s:element minOccurs="1" maxOccurs="1" name="ReturnLongDetail" type="s:boolean" />
               <s:element minOccurs="1" maxOccurs="1" name="RestrictToWarehouse" nillable="true" type="s:boolean" />
               <s:element minOccurs="1" maxOccurs="1" name="LanguageID" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="ExcludeHideFromSearch" nillable="true" type="s:boolean" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -4166,6 +4609,8 @@
           <s:element minOccurs="0" maxOccurs="1" name="GroupMembers" type="tns:ArrayOfItemMemberResponse" />
           <s:element minOccurs="1" maxOccurs="1" name="IsDynamicKitMaster" type="s:boolean" />
           <s:element minOccurs="0" maxOccurs="1" name="KitMembers" type="tns:ArrayOfKitMemberResponse" />
+          <s:element minOccurs="1" maxOccurs="1" name="TaxablePrice" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="ShippingPrice" type="s:decimal" />
         </s:sequence>
       </s:complexType>
       <s:simpleType name="InventoryStatusType">
@@ -4471,6 +4916,24 @@
       </s:complexType>
       <s:element name="FireResponderResult" type="tns:FireResponderResponse" />
       <s:complexType name="FireResponderResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ApiResponse" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="SendSmsRequest" type="tns:SendSmsRequest" />
+      <s:complexType name="SendSmsRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ApiRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="SendSmsResult" type="tns:SendSmsResponse" />
+      <s:complexType name="SendSmsResponse">
         <s:complexContent mixed="false">
           <s:extension base="tns:ApiResponse" />
         </s:complexContent>
@@ -5128,39 +5591,80 @@
       <s:element name="UpdateItemResult" type="tns:UpdateItemResponse" />
       <s:element name="CreateItemRequest" type="tns:CreateItemRequest" />
       <s:element name="CreateItemResult" type="tns:CreateItemResponse" />
-      <s:element name="SetItemPriceRequest" type="tns:SetItemPriceRequest" />
-      <s:element name="SetItemPriceResult" type="tns:SetItemPriceResponse" />
-      <s:complexType name="SetItemPriceResponse">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:ApiResponse" />
-        </s:complexContent>
-      </s:complexType>
-      <s:element name="SetItemWarehouseRequest" type="tns:SetItemWarehouseRequest" />
-      <s:element name="SetItemWarehouseResult" type="tns:SetItemWarehouseResponse" />
-      <s:complexType name="SetItemWarehouseResponse">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:ApiResponse" />
-        </s:complexContent>
-      </s:complexType>
-      <s:element name="SetItemCountryRegionRequest" type="tns:SetItemCountryRegionRequest" />
-      <s:element name="SetItemCountryRegionResult" type="tns:SetItemCountryRegionResponse" />
-      <s:element name="GetItemCountryRegionRequest" type="tns:GetItemCountryRegionRequest" />
-      <s:complexType name="GetItemCountryRegionRequest">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:ApiRequest">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="ItemCode" type="s:string" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:element name="GetItemCountryRegionResult" type="tns:GetItemCountryRegionResponse" />
-      <s:element name="CreateCustomerFileRequest" type="tns:CreateCustomerFileRequest" />
-      <s:element name="CreateCustomerFileResult" type="tns:CreateCustomerFileResponse" />
-      <s:element name="CreateCustomerInquiryRequest" type="tns:CreateCustomerInquiryRequest" />
-      <s:element name="CreateCustomerInquiryResult" type="tns:CreateCustomerInquiryResponse" />
     </s:schema>
   </wsdl:types>
+  <wsdl:message name="SetItemPriceSoapIn">
+    <wsdl:part name="SetItemPriceRequest" element="tns:SetItemPriceRequest" />
+  </wsdl:message>
+  <wsdl:message name="SetItemPriceSoapOut">
+    <wsdl:part name="SetItemPriceResult" element="tns:SetItemPriceResult" />
+  </wsdl:message>
+  <wsdl:message name="SetItemPriceApiAuthentication">
+    <wsdl:part name="ApiAuthentication" element="tns:ApiAuthentication" />
+  </wsdl:message>
+  <wsdl:message name="SetItemWarehouseSoapIn">
+    <wsdl:part name="SetItemWarehouseRequest" element="tns:SetItemWarehouseRequest" />
+  </wsdl:message>
+  <wsdl:message name="SetItemWarehouseSoapOut">
+    <wsdl:part name="SetItemWarehouseResult" element="tns:SetItemWarehouseResult" />
+  </wsdl:message>
+  <wsdl:message name="SetItemWarehouseApiAuthentication">
+    <wsdl:part name="ApiAuthentication" element="tns:ApiAuthentication" />
+  </wsdl:message>
+  <wsdl:message name="SetItemCountryRegionSoapIn">
+    <wsdl:part name="SetItemCountryRegionRequest" element="tns:SetItemCountryRegionRequest" />
+  </wsdl:message>
+  <wsdl:message name="SetItemCountryRegionSoapOut">
+    <wsdl:part name="SetItemCountryRegionResult" element="tns:SetItemCountryRegionResult" />
+  </wsdl:message>
+  <wsdl:message name="SetItemCountryRegionApiAuthentication">
+    <wsdl:part name="ApiAuthentication" element="tns:ApiAuthentication" />
+  </wsdl:message>
+  <wsdl:message name="GetItemCountryRegionSoapIn">
+    <wsdl:part name="GetItemCountryRegionRequest" element="tns:GetItemCountryRegionRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetItemCountryRegionSoapOut">
+    <wsdl:part name="GetItemCountryRegionResult" element="tns:GetItemCountryRegionResult" />
+  </wsdl:message>
+  <wsdl:message name="GetItemCountryRegionApiAuthentication">
+    <wsdl:part name="ApiAuthentication" element="tns:ApiAuthentication" />
+  </wsdl:message>
+  <wsdl:message name="CreateCustomerFileSoapIn">
+    <wsdl:part name="CreateCustomerFileRequest" element="tns:CreateCustomerFileRequest" />
+  </wsdl:message>
+  <wsdl:message name="CreateCustomerFileSoapOut">
+    <wsdl:part name="CreateCustomerFileResult" element="tns:CreateCustomerFileResult" />
+  </wsdl:message>
+  <wsdl:message name="CreateCustomerFileApiAuthentication">
+    <wsdl:part name="ApiAuthentication" element="tns:ApiAuthentication" />
+  </wsdl:message>
+  <wsdl:message name="CreateCustomerInquirySoapIn">
+    <wsdl:part name="CreateCustomerInquiryRequest" element="tns:CreateCustomerInquiryRequest" />
+  </wsdl:message>
+  <wsdl:message name="CreateCustomerInquirySoapOut">
+    <wsdl:part name="CreateCustomerInquiryResult" element="tns:CreateCustomerInquiryResult" />
+  </wsdl:message>
+  <wsdl:message name="CreateCustomerInquiryApiAuthentication">
+    <wsdl:part name="ApiAuthentication" element="tns:ApiAuthentication" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerBalancesSoapIn">
+    <wsdl:part name="GetCustomerBalancesRequest" element="tns:GetCustomerBalancesRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerBalancesSoapOut">
+    <wsdl:part name="GetCustomerBalancesResult" element="tns:GetCustomerBalancesResult" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerBalancesApiAuthentication">
+    <wsdl:part name="ApiAuthentication" element="tns:ApiAuthentication" />
+  </wsdl:message>
+  <wsdl:message name="CreateCustomerBalanceAdjustmentSoapIn">
+    <wsdl:part name="CreateCustomerBalanceAdjustmentRequest" element="tns:CreateCustomerBalanceAdjustmentRequest" />
+  </wsdl:message>
+  <wsdl:message name="CreateCustomerBalanceAdjustmentSoapOut">
+    <wsdl:part name="CreateCustomerBalanceAdjustmentResult" element="tns:CreateCustomerBalanceAdjustmentResult" />
+  </wsdl:message>
+  <wsdl:message name="CreateCustomerBalanceAdjustmentApiAuthentication">
+    <wsdl:part name="ApiAuthentication" element="tns:ApiAuthentication" />
+  </wsdl:message>
   <wsdl:message name="GetCustomersSoapIn">
     <wsdl:part name="GetCustomersRequest" element="tns:GetCustomersRequest" />
   </wsdl:message>
@@ -5204,6 +5708,33 @@
     <wsdl:part name="GetRankQualificationsResult" element="tns:GetRankQualificationsResult" />
   </wsdl:message>
   <wsdl:message name="GetRankQualificationsApiAuthentication">
+    <wsdl:part name="ApiAuthentication" element="tns:ApiAuthentication" />
+  </wsdl:message>
+  <wsdl:message name="GetQualificationOverridesSoapIn">
+    <wsdl:part name="GetQualificationOverridesRequest" element="tns:GetQualificationOverridesRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetQualificationOverridesSoapOut">
+    <wsdl:part name="GetQualificationOverridesResult" element="tns:GetQualificationOverridesResult" />
+  </wsdl:message>
+  <wsdl:message name="GetQualificationOverridesApiAuthentication">
+    <wsdl:part name="ApiAuthentication" element="tns:ApiAuthentication" />
+  </wsdl:message>
+  <wsdl:message name="SetQualificationOverrideSoapIn">
+    <wsdl:part name="SetQualificationOverrideRequest" element="tns:SetQualificationOverrideRequest" />
+  </wsdl:message>
+  <wsdl:message name="SetQualificationOverrideSoapOut">
+    <wsdl:part name="SetQualificationOverrideResult" element="tns:SetQualificationOverrideResult" />
+  </wsdl:message>
+  <wsdl:message name="SetQualificationOverrideApiAuthentication">
+    <wsdl:part name="ApiAuthentication" element="tns:ApiAuthentication" />
+  </wsdl:message>
+  <wsdl:message name="DeleteQualificationOverrideSoapIn">
+    <wsdl:part name="DeleteQualificationOverrideRequest" element="tns:DeleteQualificationOverrideRequest" />
+  </wsdl:message>
+  <wsdl:message name="DeleteQualificationOverrideSoapOut">
+    <wsdl:part name="DeleteQualificationOverrideResult" element="tns:DeleteQualificationOverrideResult" />
+  </wsdl:message>
+  <wsdl:message name="DeleteQualificationOverrideApiAuthentication">
     <wsdl:part name="ApiAuthentication" element="tns:ApiAuthentication" />
   </wsdl:message>
   <wsdl:message name="AdjustInventorySoapIn">
@@ -5447,6 +5978,24 @@
     <wsdl:part name="DebitBankAccountOnFileResult" element="tns:DebitBankAccountOnFileResult" />
   </wsdl:message>
   <wsdl:message name="DebitBankAccountOnFileApiAuthentication">
+    <wsdl:part name="ApiAuthentication" element="tns:ApiAuthentication" />
+  </wsdl:message>
+  <wsdl:message name="ChargeWalletAccountSoapIn">
+    <wsdl:part name="ChargeWalletAccountRequest" element="tns:ChargeWalletAccountRequest" />
+  </wsdl:message>
+  <wsdl:message name="ChargeWalletAccountSoapOut">
+    <wsdl:part name="ChargeWalletAccountResult" element="tns:ChargeWalletAccountResult" />
+  </wsdl:message>
+  <wsdl:message name="ChargeWalletAccountApiAuthentication">
+    <wsdl:part name="ApiAuthentication" element="tns:ApiAuthentication" />
+  </wsdl:message>
+  <wsdl:message name="ChargeWalletAccountOnFileSoapIn">
+    <wsdl:part name="ChargeWalletAccountOnFileRequest" element="tns:ChargeWalletAccountOnFileRequest" />
+  </wsdl:message>
+  <wsdl:message name="ChargeWalletAccountOnFileSoapOut">
+    <wsdl:part name="ChargeWalletAccountOnFileResult" element="tns:ChargeWalletAccountOnFileResult" />
+  </wsdl:message>
+  <wsdl:message name="ChargeWalletAccountOnFileApiAuthentication">
     <wsdl:part name="ApiAuthentication" element="tns:ApiAuthentication" />
   </wsdl:message>
   <wsdl:message name="SetAccountCreditCardSoapIn">
@@ -5962,6 +6511,15 @@
   <wsdl:message name="FireResponderApiAuthentication">
     <wsdl:part name="ApiAuthentication" element="tns:ApiAuthentication" />
   </wsdl:message>
+  <wsdl:message name="SendSmsSoapIn">
+    <wsdl:part name="SendSmsRequest" element="tns:SendSmsRequest" />
+  </wsdl:message>
+  <wsdl:message name="SendSmsSoapOut">
+    <wsdl:part name="SendSmsResult" element="tns:SendSmsResult" />
+  </wsdl:message>
+  <wsdl:message name="SendSmsApiAuthentication">
+    <wsdl:part name="ApiAuthentication" element="tns:ApiAuthentication" />
+  </wsdl:message>
   <wsdl:message name="CreateVendorBillSoapIn">
     <wsdl:part name="CreateVendorBillRequest" element="tns:CreateVendorBillRequest" />
   </wsdl:message>
@@ -6259,61 +6817,63 @@
   <wsdl:message name="CreateItemApiAuthentication">
     <wsdl:part name="ApiAuthentication" element="tns:ApiAuthentication" />
   </wsdl:message>
-  <wsdl:message name="SetItemPriceSoapIn">
-    <wsdl:part name="SetItemPriceRequest" element="tns:SetItemPriceRequest" />
-  </wsdl:message>
-  <wsdl:message name="SetItemPriceSoapOut">
-    <wsdl:part name="SetItemPriceResult" element="tns:SetItemPriceResult" />
-  </wsdl:message>
-  <wsdl:message name="SetItemPriceApiAuthentication">
-    <wsdl:part name="ApiAuthentication" element="tns:ApiAuthentication" />
-  </wsdl:message>
-  <wsdl:message name="SetItemWarehouseSoapIn">
-    <wsdl:part name="SetItemWarehouseRequest" element="tns:SetItemWarehouseRequest" />
-  </wsdl:message>
-  <wsdl:message name="SetItemWarehouseSoapOut">
-    <wsdl:part name="SetItemWarehouseResult" element="tns:SetItemWarehouseResult" />
-  </wsdl:message>
-  <wsdl:message name="SetItemWarehouseApiAuthentication">
-    <wsdl:part name="ApiAuthentication" element="tns:ApiAuthentication" />
-  </wsdl:message>
-  <wsdl:message name="SetItemCountryRegionSoapIn">
-    <wsdl:part name="SetItemCountryRegionRequest" element="tns:SetItemCountryRegionRequest" />
-  </wsdl:message>
-  <wsdl:message name="SetItemCountryRegionSoapOut">
-    <wsdl:part name="SetItemCountryRegionResult" element="tns:SetItemCountryRegionResult" />
-  </wsdl:message>
-  <wsdl:message name="SetItemCountryRegionApiAuthentication">
-    <wsdl:part name="ApiAuthentication" element="tns:ApiAuthentication" />
-  </wsdl:message>
-  <wsdl:message name="GetItemCountryRegionSoapIn">
-    <wsdl:part name="GetItemCountryRegionRequest" element="tns:GetItemCountryRegionRequest" />
-  </wsdl:message>
-  <wsdl:message name="GetItemCountryRegionSoapOut">
-    <wsdl:part name="GetItemCountryRegionResult" element="tns:GetItemCountryRegionResult" />
-  </wsdl:message>
-  <wsdl:message name="GetItemCountryRegionApiAuthentication">
-    <wsdl:part name="ApiAuthentication" element="tns:ApiAuthentication" />
-  </wsdl:message>
-  <wsdl:message name="CreateCustomerFileSoapIn">
-    <wsdl:part name="CreateCustomerFileRequest" element="tns:CreateCustomerFileRequest" />
-  </wsdl:message>
-  <wsdl:message name="CreateCustomerFileSoapOut">
-    <wsdl:part name="CreateCustomerFileResult" element="tns:CreateCustomerFileResult" />
-  </wsdl:message>
-  <wsdl:message name="CreateCustomerFileApiAuthentication">
-    <wsdl:part name="ApiAuthentication" element="tns:ApiAuthentication" />
-  </wsdl:message>
-  <wsdl:message name="CreateCustomerInquirySoapIn">
-    <wsdl:part name="CreateCustomerInquiryRequest" element="tns:CreateCustomerInquiryRequest" />
-  </wsdl:message>
-  <wsdl:message name="CreateCustomerInquirySoapOut">
-    <wsdl:part name="CreateCustomerInquiryResult" element="tns:CreateCustomerInquiryResult" />
-  </wsdl:message>
-  <wsdl:message name="CreateCustomerInquiryApiAuthentication">
-    <wsdl:part name="ApiAuthentication" element="tns:ApiAuthentication" />
-  </wsdl:message>
   <wsdl:portType name="ExigoApiSoap">
+    <wsdl:operation name="SetItemPrice">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    Sets pricing info for an item)
+    </wsdl:documentation>
+      <wsdl:input message="tns:SetItemPriceSoapIn" />
+      <wsdl:output message="tns:SetItemPriceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetItemWarehouse">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    Sets warehouse info for an item)
+    </wsdl:documentation>
+      <wsdl:input message="tns:SetItemWarehouseSoapIn" />
+      <wsdl:output message="tns:SetItemWarehouseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetItemCountryRegion">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    Sets country/region  info for an item)
+    </wsdl:documentation>
+      <wsdl:input message="tns:SetItemCountryRegionSoapIn" />
+      <wsdl:output message="tns:SetItemCountryRegionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemCountryRegion">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    Returns item, country and region properties along with taxings for an item.
+    </wsdl:documentation>
+      <wsdl:input message="tns:GetItemCountryRegionSoapIn" />
+      <wsdl:output message="tns:GetItemCountryRegionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCustomerFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    Creates a file for the customer in their default directory
+    </wsdl:documentation>
+      <wsdl:input message="tns:CreateCustomerFileSoapIn" />
+      <wsdl:output message="tns:CreateCustomerFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCustomerInquiry">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    Creates a customer history record.
+    </wsdl:documentation>
+      <wsdl:input message="tns:CreateCustomerInquirySoapIn" />
+      <wsdl:output message="tns:CreateCustomerInquirySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerBalances">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    Returns the sum of orders, payments, and adjustments per currency.
+    </wsdl:documentation>
+      <wsdl:input message="tns:GetCustomerBalancesSoapIn" />
+      <wsdl:output message="tns:GetCustomerBalancesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCustomerBalanceAdjustment">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    Create an adjustment for a customer's account in a currency.
+    </wsdl:documentation>
+      <wsdl:input message="tns:CreateCustomerBalanceAdjustmentSoapIn" />
+      <wsdl:output message="tns:CreateCustomerBalanceAdjustmentSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetCustomers">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
     Returns one or more customers that match the filter critera passed in.
@@ -6348,6 +6908,23 @@
     </wsdl:documentation>
       <wsdl:input message="tns:GetRankQualificationsSoapIn" />
       <wsdl:output message="tns:GetRankQualificationsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQualificationOverrides">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    Returns Customer Overrides
+    </wsdl:documentation>
+      <wsdl:input message="tns:GetQualificationOverridesSoapIn" />
+      <wsdl:output message="tns:GetQualificationOverridesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetQualificationOverride">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Create or Edit a Customer Override</wsdl:documentation>
+      <wsdl:input message="tns:SetQualificationOverrideSoapIn" />
+      <wsdl:output message="tns:SetQualificationOverrideSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteQualificationOverride">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Delete a Customer Override</wsdl:documentation>
+      <wsdl:input message="tns:DeleteQualificationOverrideSoapIn" />
+      <wsdl:output message="tns:DeleteQualificationOverrideSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="AdjustInventory">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
@@ -6529,6 +7106,22 @@ If the debit request is successful, the order is changed to accepted.
 </wsdl:documentation>
       <wsdl:input message="tns:DebitBankAccountOnFileSoapIn" />
       <wsdl:output message="tns:DebitBankAccountOnFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChargeWalletAccount">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Attempts to debit a wallet account with the amount found on an exiting order, or a new order in a transaction.
+If the debit request is successful, the order is changed to accepted. 
+</wsdl:documentation>
+      <wsdl:input message="tns:ChargeWalletAccountSoapIn" />
+      <wsdl:output message="tns:ChargeWalletAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChargeWalletAccountOnFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Attempts to debit a wallet account with the amount found on an exiting order, or a new order in a transaction.
+If the debit request is successful, the order is changed to accepted. 
+</wsdl:documentation>
+      <wsdl:input message="tns:ChargeWalletAccountOnFileSoapIn" />
+      <wsdl:output message="tns:ChargeWalletAccountOnFileSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="SetAccountCreditCard">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Setup primary or secondary credit card on file for an existing customer, or new customer in a transaction.</wsdl:documentation>
@@ -6916,6 +7509,13 @@ Returns countries setup for company as well as the regions for a single country 
       <wsdl:input message="tns:FireResponderSoapIn" />
       <wsdl:output message="tns:FireResponderSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="SendSms">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    Sends an SMS message.
+    </wsdl:documentation>
+      <wsdl:input message="tns:SendSmsSoapIn" />
+      <wsdl:output message="tns:SendSmsSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="CreateVendorBill">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
     Creates a new VendorBill for a customer on file.
@@ -7147,51 +7747,89 @@ Returns countries setup for company as well as the regions for a single country 
       <wsdl:input message="tns:CreateItemSoapIn" />
       <wsdl:output message="tns:CreateItemSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="SetItemPrice">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-    Sets pricing info for an item)
-    </wsdl:documentation>
-      <wsdl:input message="tns:SetItemPriceSoapIn" />
-      <wsdl:output message="tns:SetItemPriceSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="SetItemWarehouse">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-    Sets warehouse info for an item)
-    </wsdl:documentation>
-      <wsdl:input message="tns:SetItemWarehouseSoapIn" />
-      <wsdl:output message="tns:SetItemWarehouseSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="SetItemCountryRegion">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-    Sets country/region  info for an item)
-    </wsdl:documentation>
-      <wsdl:input message="tns:SetItemCountryRegionSoapIn" />
-      <wsdl:output message="tns:SetItemCountryRegionSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetItemCountryRegion">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-    Returns item, country and region properties along with taxings for an item.
-    </wsdl:documentation>
-      <wsdl:input message="tns:GetItemCountryRegionSoapIn" />
-      <wsdl:output message="tns:GetItemCountryRegionSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="CreateCustomerFile">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-    Creates a file for the customer in their default directory
-    </wsdl:documentation>
-      <wsdl:input message="tns:CreateCustomerFileSoapIn" />
-      <wsdl:output message="tns:CreateCustomerFileSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="CreateCustomerInquiry">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-    Creates a customer history record.
-    </wsdl:documentation>
-      <wsdl:input message="tns:CreateCustomerInquirySoapIn" />
-      <wsdl:output message="tns:CreateCustomerInquirySoapOut" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ExigoApiSoap" type="tns:ExigoApiSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SetItemPrice">
+      <soap:operation soapAction="http://api.exigo.com/SetItemPrice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SetItemPriceApiAuthentication" part="ApiAuthentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetItemWarehouse">
+      <soap:operation soapAction="http://api.exigo.com/SetItemWarehouse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SetItemWarehouseApiAuthentication" part="ApiAuthentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetItemCountryRegion">
+      <soap:operation soapAction="http://api.exigo.com/SetItemCountryRegion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SetItemCountryRegionApiAuthentication" part="ApiAuthentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemCountryRegion">
+      <soap:operation soapAction="http://api.exigo.com/GetItemCountryRegion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetItemCountryRegionApiAuthentication" part="ApiAuthentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCustomerFile">
+      <soap:operation soapAction="http://api.exigo.com/CreateCustomerFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:CreateCustomerFileApiAuthentication" part="ApiAuthentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCustomerInquiry">
+      <soap:operation soapAction="http://api.exigo.com/CreateCustomerInquiry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:CreateCustomerInquiryApiAuthentication" part="ApiAuthentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerBalances">
+      <soap:operation soapAction="http://api.exigo.com/GetCustomerBalances" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetCustomerBalancesApiAuthentication" part="ApiAuthentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCustomerBalanceAdjustment">
+      <soap:operation soapAction="http://api.exigo.com/CreateCustomerBalanceAdjustment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:CreateCustomerBalanceAdjustmentApiAuthentication" part="ApiAuthentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetCustomers">
       <soap:operation soapAction="http://api.exigo.com/GetCustomers" style="document" />
       <wsdl:input>
@@ -7237,6 +7875,36 @@ Returns countries setup for company as well as the regions for a single country 
       <wsdl:input>
         <soap:body use="literal" />
         <soap:header message="tns:GetRankQualificationsApiAuthentication" part="ApiAuthentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQualificationOverrides">
+      <soap:operation soapAction="http://api.exigo.com/GetQualificationOverrides" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetQualificationOverridesApiAuthentication" part="ApiAuthentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetQualificationOverride">
+      <soap:operation soapAction="http://api.exigo.com/SetQualificationOverride" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SetQualificationOverrideApiAuthentication" part="ApiAuthentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteQualificationOverride">
+      <soap:operation soapAction="http://api.exigo.com/DeleteQualificationOverride" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DeleteQualificationOverrideApiAuthentication" part="ApiAuthentication" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap:body use="literal" />
@@ -7507,6 +8175,26 @@ Returns countries setup for company as well as the regions for a single country 
       <wsdl:input>
         <soap:body use="literal" />
         <soap:header message="tns:DebitBankAccountOnFileApiAuthentication" part="ApiAuthentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChargeWalletAccount">
+      <soap:operation soapAction="http://api.exigo.com/ChargeWalletAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ChargeWalletAccountApiAuthentication" part="ApiAuthentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChargeWalletAccountOnFile">
+      <soap:operation soapAction="http://api.exigo.com/ChargeWalletAccountOnFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ChargeWalletAccountOnFileApiAuthentication" part="ApiAuthentication" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap:body use="literal" />
@@ -8082,6 +8770,16 @@ Returns countries setup for company as well as the regions for a single country 
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SendSms">
+      <soap:operation soapAction="http://api.exigo.com/SendSms" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SendSmsApiAuthentication" part="ApiAuthentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="CreateVendorBill">
       <soap:operation soapAction="http://api.exigo.com/CreateVendorBill" style="document" />
       <wsdl:input>
@@ -8412,69 +9110,89 @@ Returns countries setup for company as well as the regions for a single country 
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SetItemPrice">
-      <soap:operation soapAction="http://api.exigo.com/SetItemPrice" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-        <soap:header message="tns:SetItemPriceApiAuthentication" part="ApiAuthentication" use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SetItemWarehouse">
-      <soap:operation soapAction="http://api.exigo.com/SetItemWarehouse" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-        <soap:header message="tns:SetItemWarehouseApiAuthentication" part="ApiAuthentication" use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SetItemCountryRegion">
-      <soap:operation soapAction="http://api.exigo.com/SetItemCountryRegion" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-        <soap:header message="tns:SetItemCountryRegionApiAuthentication" part="ApiAuthentication" use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetItemCountryRegion">
-      <soap:operation soapAction="http://api.exigo.com/GetItemCountryRegion" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-        <soap:header message="tns:GetItemCountryRegionApiAuthentication" part="ApiAuthentication" use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CreateCustomerFile">
-      <soap:operation soapAction="http://api.exigo.com/CreateCustomerFile" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-        <soap:header message="tns:CreateCustomerFileApiAuthentication" part="ApiAuthentication" use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CreateCustomerInquiry">
-      <soap:operation soapAction="http://api.exigo.com/CreateCustomerInquiry" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-        <soap:header message="tns:CreateCustomerInquiryApiAuthentication" part="ApiAuthentication" use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ExigoApiSoap12" type="tns:ExigoApiSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SetItemPrice">
+      <soap12:operation soapAction="http://api.exigo.com/SetItemPrice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SetItemPriceApiAuthentication" part="ApiAuthentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetItemWarehouse">
+      <soap12:operation soapAction="http://api.exigo.com/SetItemWarehouse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SetItemWarehouseApiAuthentication" part="ApiAuthentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetItemCountryRegion">
+      <soap12:operation soapAction="http://api.exigo.com/SetItemCountryRegion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SetItemCountryRegionApiAuthentication" part="ApiAuthentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemCountryRegion">
+      <soap12:operation soapAction="http://api.exigo.com/GetItemCountryRegion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetItemCountryRegionApiAuthentication" part="ApiAuthentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCustomerFile">
+      <soap12:operation soapAction="http://api.exigo.com/CreateCustomerFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:CreateCustomerFileApiAuthentication" part="ApiAuthentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCustomerInquiry">
+      <soap12:operation soapAction="http://api.exigo.com/CreateCustomerInquiry" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:CreateCustomerInquiryApiAuthentication" part="ApiAuthentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerBalances">
+      <soap12:operation soapAction="http://api.exigo.com/GetCustomerBalances" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetCustomerBalancesApiAuthentication" part="ApiAuthentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCustomerBalanceAdjustment">
+      <soap12:operation soapAction="http://api.exigo.com/CreateCustomerBalanceAdjustment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:CreateCustomerBalanceAdjustmentApiAuthentication" part="ApiAuthentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetCustomers">
       <soap12:operation soapAction="http://api.exigo.com/GetCustomers" style="document" />
       <wsdl:input>
@@ -8520,6 +9238,36 @@ Returns countries setup for company as well as the regions for a single country 
       <wsdl:input>
         <soap12:body use="literal" />
         <soap12:header message="tns:GetRankQualificationsApiAuthentication" part="ApiAuthentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQualificationOverrides">
+      <soap12:operation soapAction="http://api.exigo.com/GetQualificationOverrides" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetQualificationOverridesApiAuthentication" part="ApiAuthentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetQualificationOverride">
+      <soap12:operation soapAction="http://api.exigo.com/SetQualificationOverride" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SetQualificationOverrideApiAuthentication" part="ApiAuthentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteQualificationOverride">
+      <soap12:operation soapAction="http://api.exigo.com/DeleteQualificationOverride" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DeleteQualificationOverrideApiAuthentication" part="ApiAuthentication" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
@@ -8790,6 +9538,26 @@ Returns countries setup for company as well as the regions for a single country 
       <wsdl:input>
         <soap12:body use="literal" />
         <soap12:header message="tns:DebitBankAccountOnFileApiAuthentication" part="ApiAuthentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChargeWalletAccount">
+      <soap12:operation soapAction="http://api.exigo.com/ChargeWalletAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ChargeWalletAccountApiAuthentication" part="ApiAuthentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChargeWalletAccountOnFile">
+      <soap12:operation soapAction="http://api.exigo.com/ChargeWalletAccountOnFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ChargeWalletAccountOnFileApiAuthentication" part="ApiAuthentication" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
@@ -9365,6 +10133,16 @@ Returns countries setup for company as well as the regions for a single country 
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SendSms">
+      <soap12:operation soapAction="http://api.exigo.com/SendSms" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SendSmsApiAuthentication" part="ApiAuthentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="CreateVendorBill">
       <soap12:operation soapAction="http://api.exigo.com/CreateVendorBill" style="document" />
       <wsdl:input>
@@ -9690,66 +10468,6 @@ Returns countries setup for company as well as the regions for a single country 
       <wsdl:input>
         <soap12:body use="literal" />
         <soap12:header message="tns:CreateItemApiAuthentication" part="ApiAuthentication" use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SetItemPrice">
-      <soap12:operation soapAction="http://api.exigo.com/SetItemPrice" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-        <soap12:header message="tns:SetItemPriceApiAuthentication" part="ApiAuthentication" use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SetItemWarehouse">
-      <soap12:operation soapAction="http://api.exigo.com/SetItemWarehouse" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-        <soap12:header message="tns:SetItemWarehouseApiAuthentication" part="ApiAuthentication" use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SetItemCountryRegion">
-      <soap12:operation soapAction="http://api.exigo.com/SetItemCountryRegion" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-        <soap12:header message="tns:SetItemCountryRegionApiAuthentication" part="ApiAuthentication" use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetItemCountryRegion">
-      <soap12:operation soapAction="http://api.exigo.com/GetItemCountryRegion" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-        <soap12:header message="tns:GetItemCountryRegionApiAuthentication" part="ApiAuthentication" use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CreateCustomerFile">
-      <soap12:operation soapAction="http://api.exigo.com/CreateCustomerFile" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-        <soap12:header message="tns:CreateCustomerFileApiAuthentication" part="ApiAuthentication" use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CreateCustomerInquiry">
-      <soap12:operation soapAction="http://api.exigo.com/CreateCustomerInquiry" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-        <soap12:header message="tns:CreateCustomerInquiryApiAuthentication" part="ApiAuthentication" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />

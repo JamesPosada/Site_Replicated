@@ -39,3 +39,44 @@ C:\ExigoGitHub\Replicated Site Shell (MVC)\trunk\ReplicatedSite\bin\System.Web.W
 C:\ExigoGitHub\Replicated Site Shell (MVC)\trunk\ReplicatedSite\obj\Debug\ReplicatedSite.csprojResolveAssemblyReference.cache
 C:\ExigoGitHub\Replicated Site Shell (MVC)\trunk\ReplicatedSite\obj\Debug\ReplicatedSite.dll
 C:\ExigoGitHub\Replicated Site Shell (MVC)\trunk\ReplicatedSite\obj\Debug\ReplicatedSite.pdb
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\ReplicatedSite.dll.config
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\ReplicatedSite.dll
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\ReplicatedSite.pdb
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\Antlr3.Runtime.dll
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\EntityFramework.dll
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\Microsoft.Data.Edm.dll
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\Microsoft.Data.OData.dll
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\Microsoft.Data.Services.Client.dll
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\Newtonsoft.Json.dll
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\System.Net.Http.Formatting.dll
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\System.Spatial.dll
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\System.Web.Helpers.dll
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\System.Web.Http.dll
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\System.Web.Http.WebHost.dll
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\System.Web.Mvc.dll
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\System.Web.Optimization.dll
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\System.Web.Razor.dll
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\System.Web.WebPages.dll
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\System.Web.WebPages.Razor.dll
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\WebGrease.dll
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\EntityFramework.xml
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\Microsoft.Data.Edm.xml
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\Microsoft.Data.OData.xml
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\Microsoft.Data.Services.Client.xml
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\System.Spatial.xml
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\Newtonsoft.Json.xml
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\System.Net.Http.Formatting.xml
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\System.Web.Helpers.xml
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\System.Web.Http.xml
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\System.Web.Http.WebHost.xml
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\System.Web.Mvc.xml
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\System.Web.Razor.xml
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\System.Web.WebPages.xml
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\bin\System.Web.WebPages.Razor.xml
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\obj\Debug\ReplicatedSite.csprojResolveAssemblyReference.cache
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\obj\Debug\ReplicatedSite.dll
+C:\Users\Developer\Documents\GitHub\replicatedsiteshell-mvc\ReplicatedSite\obj\Debug\ReplicatedSite.pdb

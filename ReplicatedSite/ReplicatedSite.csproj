@@ -427,7 +427,16 @@
     <Content Include="Web References\Exigo.WebService\EnsureMailFoldersResponse.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
-    <Content Include="Web References\Exigo.WebService\ExigoApi.disco" />
+    <Content Include="Web References\Exigo.WebService\ChargeWalletAccountResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\Exigo.WebService\CreateCustomerBalanceAdjustmentResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\Exigo.WebService\DeleteQualificationOverrideResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\Exigo.WebService\ExigoApi.disco" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -574,10 +583,16 @@
     <Content Include="Web References\Exigo.WebService\PlaceUniLevelNodeResponse.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
-    <Content Include="Web References\Exigo.WebService\Reference.map">
+    <Content Include="Web References\Exigo.WebService\GetCustomerBalancesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\Exigo.WebService\GetQualitificationOverridesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\Exigo.WebService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <Content Include="Web References\Exigo.WebService\SetAccountResponse.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
@@ -650,6 +665,12 @@
     <Content Include="Web References\Exigo.WebService\VerifyAddressResponse.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <Content Include="Web References\Exigo.WebService\SendSmsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\Exigo.WebService\SetQualificationOverrideResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -692,7 +713,7 @@
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Web References\Exigo.WebService\ExigoApi.wsdl" />
+    <None Include="Web References\Exigo.WebService\ExigoApi.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <ServiceReferenceMetadataStorage Include="Service References\Exigo.OData\">

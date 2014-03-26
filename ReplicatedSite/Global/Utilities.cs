@@ -213,8 +213,8 @@ namespace ReplicatedSite
                 br.Close();
                 result.Close();
                 bytes = new MemoryStream(rBytes, 0, rBytes.Length).ToArray();
-            }
-            catch (Exception c)
+            }/// HACK commented out Caught exception variable
+            catch (Exception /*c*/)
             {
                 //MessageBox.Show(c.Message);
             }

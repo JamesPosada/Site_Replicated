@@ -18,51 +18,75 @@ namespace ReplicatedSite.Services
 
             var identity = HttpContext.Current.Cache["OwnerIdentity-" + key] as OwnerIdentity;
 
-            if(identity == null)
+            if (identity == null)
             {
                 try
                 {
-                    // Replicated SQL
-                    var context = ExigoApiFactory.CreateSqlDapperContext();
-                    identity = context.Query<OwnerIdentity>(@"
-                            SELECT
-                                cs.CustomerID,
-                                c.CustomerTypeID,
-                                c.CustomerStatusID,
-                                HighestAchievedRankID = c.RankID,
-                                c.CreatedDate,
-                                WarehouseID = COALESCE(c.DefaultWarehouseID, @defaultwarehouseid),
+                    var customer = ExigoApiContext.CreateWebServiceContext().GetCustomerSite(new GetCustomerSiteRequest
+                    {
+                        WebAlias = key
+                    });
 
-                                cs.WebAlias,
-                                cs.FirstName,
-                                cs.LastName,
-                                cs.Company,
-                                cs.Email,
-                                cs.Phone,
-                                cs.Phone2,
-                                cs.Fax,
+                    identity = new Identity
+                    {
+                        CustomerID = customer.CustomerID,
+                        WebAlias = customer.WebAlias,
+                        FirstName = customer.FirstName,
+                        LastName = customer.LastName,
+                        Company = customer.Company,
+                        Email = customer.Email,
+                        DaytimePhone = customer.Phone,
+                        EveningPhone = customer.Phone2,
 
-                                cs.Address1,
-                                cs.Address2,
-                                cs.City,
-                                cs.State,
-                                cs.Zip,
-                                cs.Country,
+                        Notes1 = customer.Notes1,
+                        Notes2 = customer.Notes2,
+                        Notes3 = customer.Notes3,
+                        Notes4 = customer.Notes4
+                    };
 
-                                cs.Notes1,
-                                cs.Notes2,
-                                cs.Notes3,
-                                cs.Notes4
+//                    // Replicated SQL
+//                    var context = ExigoApiFactory.CreateSqlDapperContext();
 
-                            FROM CustomerSites cs
-                                INNER JOIN Customers c
-                                    ON c.CustomerID = cs.CustomerID
-                            WHERE cs.webalias = @webalias
-                        ", new { 
-                             webalias = key,
-                             defaultwarehouseid = Warehouses.Default
-                         }).FirstOrDefault();
-                    context.Close();
+//                    identity = context.Query<OwnerIdentity>(@"
+//                            SELECT
+//                                cs.CustomerID,
+//                                c.CustomerTypeID,
+//                                c.CustomerStatusID,
+//                                HighestAchievedRankID = c.RankID,
+//                                c.CreatedDate,
+//                                WarehouseID = COALESCE(c.DefaultWarehouseID, @defaultwarehouseid),
+//
+//                                cs.WebAlias,
+//                                cs.FirstName,
+//                                cs.LastName,
+//                                cs.Company,
+//                                cs.Email,
+//                                cs.Phone,
+//                                cs.Phone2,
+//                                cs.Fax,
+//
+//                                cs.Address1,
+//                                cs.Address2,
+//                                cs.City,
+//                                cs.State,
+//                                cs.Zip,
+//                                cs.Country,
+//
+//                                cs.Notes1,
+//                                cs.Notes2,
+//                                cs.Notes3,
+//                                cs.Notes4
+//
+//                            FROM CustomerSites cs
+//                                INNER JOIN Customers c
+//                                    ON c.CustomerID = cs.CustomerID
+//                            WHERE cs.webalias = @webalias
+//                        ", new
+//                         {
+//                             webalias = key,
+//                             defaultwarehouseid = Warehouses.Default
+//                         }).FirstOrDefault();
+//                    context.Close();
 
                     // Save the identity
                     HttpContext.Current.Cache.Insert(key,
@@ -72,7 +96,7 @@ namespace ReplicatedSite.Services
                         System.Web.Caching.Cache.NoSlidingExpiration,
                         System.Web.Caching.CacheItemPriority.Normal,
                         null);
-                    
+
 
 
 
@@ -184,16 +208,16 @@ namespace ReplicatedSite.Services
             // Map the customer to the identity
             identity = new CustomerIdentity()
             {
-                CustomerID         = customer.CustomerID,
-                FirstName          = customer.FirstName,
-                LastName           = customer.LastName,
-                Company            = customer.Company,
-                LoginName          = customer.LoginName,
-                CustomerTypeID     = customer.CustomerTypeID,
-                CustomerStatusID   = customer.CustomerStatusID,
-                LanguageID         = customer.LanguageID,
+                CustomerID = customer.CustomerID,
+                FirstName = customer.FirstName,
+                LastName = customer.LastName,
+                Company = customer.Company,
+                LoginName = customer.LoginName,
+                CustomerTypeID = customer.CustomerTypeID,
+                CustomerStatusID = customer.CustomerStatusID,
+                LanguageID = customer.LanguageID,
                 DefaultWarehouseID = customer.DefaultWarehouseID,
-                CurrencyCode       = customer.CurrencyCode
+                CurrencyCode = customer.CurrencyCode
             };
 
 
